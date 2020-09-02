@@ -9,11 +9,20 @@
 /* Begin PBXBuildFile section */
 		81BA92CA24DB2F83003A050F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92C924DB2F83003A050F /* AppDelegate.swift */; };
 		81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92CB24DB2F83003A050F /* SceneDelegate.swift */; };
-		81BA92CE24DB2F83003A050F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92CD24DB2F83003A050F /* ContentView.swift */; };
+		81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92CD24DB2F83003A050F /* HomeView.swift */; };
 		81BA92D024DB2F85003A050F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BA92CF24DB2F85003A050F /* Assets.xcassets */; };
 		81BA92D324DB2F85003A050F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BA92D224DB2F85003A050F /* Preview Assets.xcassets */; };
 		81BA92D624DB2F85003A050F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA92D424DB2F85003A050F /* LaunchScreen.storyboard */; };
 		81BA92E124DB2F85003A050F /* BoyVSGirlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92E024DB2F85003A050F /* BoyVSGirlTests.swift */; };
+		81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92EB24DB2FCB003A050F /* HomeViewModel.swift */; };
+		81BA92EF24DB34FC003A050F /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92EE24DB34FC003A050F /* Gender.swift */; };
+		81BA92F124DB350F003A050F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F024DB350F003A050F /* Vote.swift */; };
+		81BA92F324DB351B003A050F /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92EE24DB34FC003A050F /* Gender.swift */; };
+		81BA92F424DB351D003A050F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F024DB350F003A050F /* Vote.swift */; };
+		81BA92F824DB3FAB003A050F /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F724DB3FAB003A050F /* RoundedCorners.swift */; };
+		81BA92FA24DB5112003A050F /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F924DB5112003A050F /* Images.swift */; };
+		81BA92FD24DB7976003A050F /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FC24DB7976003A050F /* UIScreen.swift */; };
+		81BA930024DB7E48003A050F /* Ext-Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext-Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +39,7 @@
 		81BA92C624DB2F83003A050F /* BoyVSGirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoyVSGirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA92C924DB2F83003A050F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81BA92CB24DB2F83003A050F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		81BA92CD24DB2F83003A050F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		81BA92CD24DB2F83003A050F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		81BA92CF24DB2F85003A050F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81BA92D224DB2F85003A050F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		81BA92D524DB2F85003A050F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +47,13 @@
 		81BA92DC24DB2F85003A050F /* BoyVSGirlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoyVSGirlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA92E024DB2F85003A050F /* BoyVSGirlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyVSGirlTests.swift; sourceTree = "<group>"; };
 		81BA92E224DB2F85003A050F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81BA92EB24DB2FCB003A050F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		81BA92EE24DB34FC003A050F /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		81BA92F024DB350F003A050F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		81BA92F724DB3FAB003A050F /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		81BA92F924DB5112003A050F /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		81BA92FC24DB7976003A050F /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		81BA92FF24DB7E48003A050F /* Ext-Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +97,11 @@
 			children = (
 				81BA92C924DB2F83003A050F /* AppDelegate.swift */,
 				81BA92CB24DB2F83003A050F /* SceneDelegate.swift */,
-				81BA92CD24DB2F83003A050F /* ContentView.swift */,
+				81BA92FE24DB7AE2003A050F /* Views */,
+				81BA92FB24DB7948003A050F /* Extensions */,
+				81BA92F624DB3F9A003A050F /* Utils */,
+				81BA92F524DB3520003A050F /* ViewModels */,
+				81BA92F224DB3516003A050F /* Model */,
 				81BA92CF24DB2F85003A050F /* Assets.xcassets */,
 				81BA92D424DB2F85003A050F /* LaunchScreen.storyboard */,
 				81BA92D724DB2F85003A050F /* Info.plist */,
@@ -105,6 +125,49 @@
 				81BA92E224DB2F85003A050F /* Info.plist */,
 			);
 			path = BoyVSGirlTests;
+			sourceTree = "<group>";
+		};
+		81BA92F224DB3516003A050F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92F024DB350F003A050F /* Vote.swift */,
+				81BA92EE24DB34FC003A050F /* Gender.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		81BA92F524DB3520003A050F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92EB24DB2FCB003A050F /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		81BA92F624DB3F9A003A050F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92F724DB3FAB003A050F /* RoundedCorners.swift */,
+				81BA92F924DB5112003A050F /* Images.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		81BA92FB24DB7948003A050F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92FC24DB7976003A050F /* UIScreen.swift */,
+				81BA92FF24DB7E48003A050F /* Ext-Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		81BA92FE24DB7AE2003A050F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92CD24DB2F83003A050F /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA92CA24DB2F83003A050F /* AppDelegate.swift in Sources */,
+				81BA92F124DB350F003A050F /* Vote.swift in Sources */,
+				81BA92EF24DB34FC003A050F /* Gender.swift in Sources */,
 				81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */,
-				81BA92CE24DB2F83003A050F /* ContentView.swift in Sources */,
+				81BA92FD24DB7976003A050F /* UIScreen.swift in Sources */,
+				81BA930024DB7E48003A050F /* Ext-Color.swift in Sources */,
+				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
+				81BA92FA24DB5112003A050F /* Images.swift in Sources */,
+				81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */,
+				81BA92F824DB3FAB003A050F /* RoundedCorners.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81BA92F324DB351B003A050F /* Gender.swift in Sources */,
+				81BA92F424DB351D003A050F /* Vote.swift in Sources */,
 				81BA92E124DB2F85003A050F /* BoyVSGirlTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
