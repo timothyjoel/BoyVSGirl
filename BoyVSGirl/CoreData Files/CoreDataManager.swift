@@ -29,8 +29,8 @@ class CoreDataManager {
         do {
             try managedContext.save()
             os_log(.info, log: .coreData, "Saved new vote: Voter - %@, vote - %@", vote.voter, selectedVote)
-        } catch {
-            os_log(.error, log: .coreData, "Failed to save data")
+        } catch let error as NSError {
+            os_log(.error, log: .coreData, "Failed to save data, error: %@", error.localizedDescription)
         }
         
     }
