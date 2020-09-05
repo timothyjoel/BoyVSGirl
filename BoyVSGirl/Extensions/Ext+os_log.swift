@@ -9,7 +9,7 @@ extension OSLog {
     private static var subsystem = Bundle.main.bundleIdentifier!
 
     /// Logs related to view cycle
-    static let viewCycle = OSLog(subsystem: subsystem, category: "ViewCycle")
+    static let view = OSLog(subsystem: subsystem, category: "View")
     /// Logs related to data management processes - CRUD
     static let coreData = OSLog(subsystem: subsystem, category: "CoreData")
     
