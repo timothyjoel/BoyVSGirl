@@ -23,6 +23,7 @@
 		81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext+Color.swift */; };
 		E46F37D72503D4C3007BD54E /* GenderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D62503D4C3007BD54E /* GenderImageView.swift */; };
 		E46F37DA2503D811007BD54E /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D92503D811007BD54E /* Icon.swift */; };
+		E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */; };
 		E4A7F8292500E04200B3568E /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A7F8282500E04200B3568E /* IconView.swift */; };
 		E4B235CC24FFFA4B00950A29 /* Ext+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B235CB24FFFA4B00950A29 /* Ext+Double.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		81BA92FF24DB7E48003A050F /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		E46F37D62503D4C3007BD54E /* GenderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderImageView.swift; sourceTree = "<group>"; };
 		E46F37D92503D811007BD54E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
 		E4A7F8282500E04200B3568E /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		E4B235CB24FFFA4B00950A29 /* Ext+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Double.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 			children = (
 				81BA92C924DB2F83003A050F /* AppDelegate.swift */,
 				81BA92CB24DB2F83003A050F /* SceneDelegate.swift */,
+				E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */,
 				81BA92F224DB3516003A050F /* Model */,
 				81BA92FE24DB7AE2003A050F /* Home Screen */,
 				E46F37D82503D7C2007BD54E /* Reusable Views */,
@@ -286,6 +289,7 @@
 				81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */,
 				81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */,
 				81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */,
+				E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */,
 				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
 				81BA92FA24DB5112003A050F /* Images.swift in Sources */,
 				81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */,
@@ -555,6 +559,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */,
+			);
+			currentVersion = E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */;
+			path = BoyVSGirl.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 81BA92BE24DB2F83003A050F /* Project object */;
 }
