@@ -102,17 +102,14 @@
 		81BA92C824DB2F83003A050F /* BoyVSGirl */ = {
 			isa = PBXGroup;
 			children = (
-				81BA92C924DB2F83003A050F /* AppDelegate.swift */,
-				81BA92CB24DB2F83003A050F /* SceneDelegate.swift */,
-				E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */,
+				E46F38022503DE51007BD54E /* App */,
 				81BA92F224DB3516003A050F /* Model */,
 				81BA92FE24DB7AE2003A050F /* Home Screen */,
 				E46F37D82503D7C2007BD54E /* Reusable Views */,
 				81BA92FB24DB7948003A050F /* Extensions */,
 				81BA92F624DB3F9A003A050F /* Enums */,
+				E46F38012503DE2C007BD54E /* CoreData Files */,
 				81BA92CF24DB2F85003A050F /* Assets.xcassets */,
-				81BA92D424DB2F85003A050F /* LaunchScreen.storyboard */,
-				81BA92D724DB2F85003A050F /* Info.plist */,
 				81BA92D124DB2F85003A050F /* Preview Content */,
 			);
 			path = BoyVSGirl;
@@ -179,6 +176,25 @@
 				E4A7F8282500E04200B3568E /* IconView.swift */,
 			);
 			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		E46F38012503DE2C007BD54E /* CoreData Files */ = {
+			isa = PBXGroup;
+			children = (
+				E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */,
+			);
+			path = "CoreData Files";
+			sourceTree = "<group>";
+		};
+		E46F38022503DE51007BD54E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				81BA92C924DB2F83003A050F /* AppDelegate.swift */,
+				81BA92CB24DB2F83003A050F /* SceneDelegate.swift */,
+				81BA92D424DB2F85003A050F /* LaunchScreen.storyboard */,
+				81BA92D724DB2F85003A050F /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
