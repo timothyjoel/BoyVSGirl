@@ -22,7 +22,7 @@ struct HomeView: View {
                 Spacer()
                 GirlStatisticsView(vm: vm, showGirlStats: self.$showGirlStats)
                 HomeRingChart(vm: vm) {
-                    self.vm.add(Vote(voter: "Tymeczek", vote: .boy))
+                    self.vm.add(Vote(voter: "Tymeczek", gender: .boy))
                 }
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
                 Spacer()

@@ -5,9 +5,19 @@ import Foundation
 
 struct Vote: Equatable {
     var voter: String
-    var vote: Gender
+    var gender: Gender
 }
 
-enum Gender {
-    case boy, girl
+enum Gender: Int16 {
+    
+    case boy = 0
+    case girl = 1
+    
+    var asString: String {
+        switch self {
+        case .boy: return "Boy"
+        case .girl: return "Girl"
+        }
+    }
+
 }
