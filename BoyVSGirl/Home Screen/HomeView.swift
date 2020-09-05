@@ -1,6 +1,7 @@
 //  Copyright © 2020 Timothy Stokarski. All rights reserved.
 //
 
+import os.log
 import SwiftUI
 import Combine
 
@@ -26,6 +27,11 @@ struct HomeView: View {
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
                 Spacer()
             }
+        }.onAppear {
+            os_log(.info, log: .viewCycle, "HomeView appeared")
+        }
+        .onDisappear {
+            os_log(.info, log: .viewCycle, "HomeView diappeared")
         }
     }
 }
