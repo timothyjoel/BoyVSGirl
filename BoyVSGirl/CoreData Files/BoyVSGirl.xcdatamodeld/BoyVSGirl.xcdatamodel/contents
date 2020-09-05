@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="DataVote" representedClassName="DataVote" syncable="YES" codeGenerationType="class">
+        <attribute name="vote" optional="YES" attributeType="String"/>
+        <attribute name="voter" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="DataVote" positionX="-63" positionY="-18" width="128" height="73"/>
+    </elements>
 </model>

@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     
     func add(_ vote: Vote) {
         votes.append(vote)
+        CoreDataManager.shared.add(vote)
         setFractions()
     }
     

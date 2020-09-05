@@ -24,6 +24,8 @@
 		E46F37D72503D4C3007BD54E /* GenderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D62503D4C3007BD54E /* GenderImageView.swift */; };
 		E46F37DA2503D811007BD54E /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D92503D811007BD54E /* Icon.swift */; };
 		E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */; };
+		E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38032503E0FA007BD54E /* CoreDataManager.swift */; };
+		E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38052503E1FB007BD54E /* Ext+os_log.swift */; };
 		E4A7F8292500E04200B3568E /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A7F8282500E04200B3568E /* IconView.swift */; };
 		E4B235CC24FFFA4B00950A29 /* Ext+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B235CB24FFFA4B00950A29 /* Ext+Double.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		E46F37D62503D4C3007BD54E /* GenderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderImageView.swift; sourceTree = "<group>"; };
 		E46F37D92503D811007BD54E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
+		E46F38032503E0FA007BD54E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E46F38052503E1FB007BD54E /* Ext+os_log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+os_log.swift"; sourceTree = "<group>"; };
 		E4A7F8282500E04200B3568E /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		E4B235CB24FFFA4B00950A29 /* Ext+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Double.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +160,7 @@
 				81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */,
 				81BA92FF24DB7E48003A050F /* Ext+Color.swift */,
 				E4B235CB24FFFA4B00950A29 /* Ext+Double.swift */,
+				E46F38052503E1FB007BD54E /* Ext+os_log.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 		E46F38012503DE2C007BD54E /* CoreData Files */ = {
 			isa = PBXGroup;
 			children = (
+				E46F38032503E0FA007BD54E /* CoreDataManager.swift */,
 				E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */,
 			);
 			path = "CoreData Files";
@@ -301,12 +307,14 @@
 				81BA92CA24DB2F83003A050F /* AppDelegate.swift in Sources */,
 				81BA92F124DB350F003A050F /* Vote.swift in Sources */,
 				E46F37DA2503D811007BD54E /* Icon.swift in Sources */,
+				E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */,
 				E4A7F8292500E04200B3568E /* IconView.swift in Sources */,
 				81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */,
 				81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */,
 				81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */,
 				E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */,
 				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
+				E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */,
 				81BA92FA24DB5112003A050F /* Images.swift in Sources */,
 				81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */,
 				E4B235CC24FFFA4B00950A29 /* Ext+Double.swift in Sources */,

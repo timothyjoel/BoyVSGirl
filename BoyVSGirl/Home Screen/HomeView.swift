@@ -21,7 +21,7 @@ struct HomeView: View {
                 Spacer()
                 GirlStatisticsView(vm: vm, showGirlStats: self.$showGirlStats)
                 HomeRingChart(vm: vm) {
-                    print("TO DO: Open Add Vote screen")
+                    self.vm.add(Vote(voter: "Tymeczek", vote: .boy))
                 }
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
                 Spacer()
