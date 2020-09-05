@@ -28,10 +28,10 @@ struct HomeView: View {
                 Spacer()
             }
         }.onAppear {
-            os_log(.info, log: .viewCycle, "HomeView appeared")
+            os_log(.info, log: .view, "HomeView appeared")
         }
         .onDisappear {
-            os_log(.info, log: .viewCycle, "HomeView diappeared")
+            os_log(.info, log: .view, "HomeView diappeared")
         }
     }
 }
