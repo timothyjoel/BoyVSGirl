@@ -22,6 +22,7 @@
 		81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */; };
 		81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext+Color.swift */; };
 		E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEA250417B200760E24 /* ManagedVote.swift */; };
+		E436DCED2506BD9C00760E24 /* AddVoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEC2506BD9C00760E24 /* AddVoteView.swift */; };
 		E46F37D72503D4C3007BD54E /* GenderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D62503D4C3007BD54E /* GenderImageView.swift */; };
 		E46F37DA2503D811007BD54E /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D92503D811007BD54E /* Icon.swift */; };
 		E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */; };
@@ -60,6 +61,7 @@
 		81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		81BA92FF24DB7E48003A050F /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		E436DCEA250417B200760E24 /* ManagedVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVote.swift; sourceTree = "<group>"; };
+		E436DCEC2506BD9C00760E24 /* AddVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVoteView.swift; sourceTree = "<group>"; };
 		E46F37D62503D4C3007BD54E /* GenderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderImageView.swift; sourceTree = "<group>"; };
 		E46F37D92503D811007BD54E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				81BA92EB24DB2FCB003A050F /* HomeViewModel.swift */,
 				81BA92CD24DB2F83003A050F /* HomeView.swift */,
+				E436DCEC2506BD9C00760E24 /* AddVoteView.swift */,
 			);
 			path = "Home Screen";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				81BA92F124DB350F003A050F /* Vote.swift in Sources */,
 				E46F37DA2503D811007BD54E /* Icon.swift in Sources */,
 				E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */,
+				E436DCED2506BD9C00760E24 /* AddVoteView.swift in Sources */,
 				E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */,
 				E4A7F8292500E04200B3568E /* IconView.swift in Sources */,
 				81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */,

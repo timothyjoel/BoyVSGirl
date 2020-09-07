@@ -5,7 +5,7 @@ import Foundation
 
 enum Icon {
     
-    case menu, back, info, cancel, trash
+    case menu, back, info, cancel, trash, questionMark
     
     var name: String {
         switch self {
@@ -14,6 +14,7 @@ enum Icon {
         case .info: return "info.circle"
         case .cancel: return "xmark"
         case .trash: return "trash"
+        case .questionMark: return "questionmark"
         }
     }
     
