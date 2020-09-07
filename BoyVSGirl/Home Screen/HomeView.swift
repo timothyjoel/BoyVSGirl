@@ -25,6 +25,13 @@ struct HomeView: View {
                     self.vm.add(Vote(voter: "Tymeczek", gender: .boy))
                 }
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
+                Button(action: {
+                    self.vm.update(Vote(voter: "Tymeczek", gender: .boy), with: Vote(voter: "Tym", gender: .girl))
+                }) {
+                    Text("Update")
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .background(Color.red)
+                }
                 Spacer()
             }
         }.onAppear {
@@ -90,7 +97,7 @@ fileprivate struct GirlStatisticsView: View {
         HStack {
             VStack (alignment: .center) {
                 GenderImageView(.girl)
-                Text("\(vm.girls)")
+                Text("\(vm.girl)")
                     .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundColor(Color.label)
                     .multilineTextAlignment(.center)
@@ -120,7 +127,7 @@ struct HomeRingChart: View {
                 .frame(width: UIScreen.width * 2/3, height: UIScreen.width * 2/3, alignment: .center)
                 .animation(.spring())
             Circle()
-                .trim(from: 0.0, to: CGFloat(vm.boys/100))
+                .trim(from: 0.0, to: CGFloat(vm.boy/100))
                 .stroke(style: StrokeStyle(lineWidth: 40.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color.boy)
                 .frame(width: UIScreen.width * 2/3, height: UIScreen.width * 2/3, alignment: .center)
@@ -149,7 +156,7 @@ fileprivate struct BoyStatisticsView: View {
             Spacer()
             VStack (alignment: .center) {
                 GenderImageView(.boy)
-                Text("\(vm.boys)")
+                Text("\(vm.boy)")
                     .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundColor(Color.label)
                     .multilineTextAlignment(.center)

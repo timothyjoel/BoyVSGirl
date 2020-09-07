@@ -114,7 +114,7 @@
 				E46F37D82503D7C2007BD54E /* Reusable Views */,
 				81BA92FB24DB7948003A050F /* Extensions */,
 				81BA92F624DB3F9A003A050F /* Enums */,
-				E46F38012503DE2C007BD54E /* CoreData Files */,
+				E46F38012503DE2C007BD54E /* CoreData */,
 				81BA92D724DB2F85003A050F /* Info.plist */,
 				81BA92CF24DB2F85003A050F /* Assets.xcassets */,
 				81BA92D124DB2F85003A050F /* Preview Content */,
@@ -186,14 +186,14 @@
 			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
-		E46F38012503DE2C007BD54E /* CoreData Files */ = {
+		E46F38012503DE2C007BD54E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				E46F38032503E0FA007BD54E /* CoreDataManager.swift */,
 				E436DCEA250417B200760E24 /* ManagedVote.swift */,
 				E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */,
 			);
-			path = "CoreData Files";
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		E46F38022503DE51007BD54E /* App */ = {

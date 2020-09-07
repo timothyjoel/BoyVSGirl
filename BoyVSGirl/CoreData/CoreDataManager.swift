@@ -34,6 +34,31 @@ class CoreDataManager {
         
     }
     
+    func update(_ vote: Vote, with new: Vote) {
+        guard let managedContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+            os_log(.fault, log: .coreData, "Failed to create App Delegate.")
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedVoteKeys.entityName)
+        fetchRequest.predicate = NSPredicate(format: "\(ManagedVoteKeys.voter) == %@", vote.voter)
+        
+        do {
+            let savedVote = try managedContext.fetch(fetchRequest)[0] as! NSManagedObject
+            savedVote.setValue(new.voter, forKey: ManagedVoteKeys.voter)
+            savedVote.setValue(new.gender.rawValue, forKey: ManagedVoteKeys.gender)
+            do {
+                try managedContext.save()
+                os_log(.info, log: .coreData, "Updated vote - %@, voter - %@ with vote - %@, voter - %@.", vote.gender.asString, vote.voter, new.gender.asString, new.voter)
+            } catch let error as NSError {
+                os_log(.error, log: .coreData, "Failed to update data, error: %@.", error.localizedDescription)
+            }
+        } catch let error as NSError {
+            os_log(.error, log: .coreData, "Failed to fetch saved vote - %@, voter - %@, error: %@.", vote.gender.asString, vote.voter, error.localizedDescription)
+        }
+        
+    }
+    
     func fetchVotes(completion: @escaping ([Vote]) -> Void) {
         guard let managedContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
             os_log(.fault, log: .coreData, "Failed to create App Delegate.")

@@ -10,6 +10,8 @@ extension OSLog {
 
     /// Logs related to view cycle
     static let view = OSLog(subsystem: subsystem, category: "View")
+    /// Logs related to viewModels
+    static let viewModel = OSLog(subsystem: subsystem, category: "ViewModel")
     /// Logs related to data management processes - CRUD
     static let coreData = OSLog(subsystem: subsystem, category: "CoreData")
     
