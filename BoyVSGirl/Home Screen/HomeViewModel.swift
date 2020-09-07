@@ -28,10 +28,11 @@ class HomeViewModel: ObservableObject {
         os_log(.info, log: .viewModel, "Current votes: girl - %f, boy - %f.", self.girl, self.boy)
     }
     
-    func remove(_ vote: Vote) {
-        votes = votes.filter { $0 != vote }
+    func delete(_ vote: Vote) {
+        CoreDataManager.shared.delete(vote)
+        CoreDataManager.shared.fetchVotes { [weak self] in self?.votes = $0 }
         setFractions()
-        os_log(.info, log: .viewModel, "Removed vote from database: girl - %f, boy - %f.", vote.gender.asString, vote.voter)
+        os_log(.info, log: .viewModel, "Removed vote from database: girl - %f, boy - %f.", self.girl, self.boy)
     }
     
     private func setFractions() {
