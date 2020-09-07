@@ -24,6 +24,7 @@ class CoreDataManager {
         let newVote = NSManagedObject(entity: entity, insertInto: managedContext)
         newVote.setValue(vote.voter, forKey: ManagedVoteKeys.voter)
         newVote.setValue(Int16(vote.gender.rawValue), forKey: ManagedVoteKeys.gender)
+        newVote.setValue(vote.id, forKey: ManagedVoteKeys.id)
         
         do {
             try managedContext.save()
@@ -41,12 +42,13 @@ class CoreDataManager {
         }
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedVoteKeys.entityName)
-        fetchRequest.predicate = NSPredicate(format: "\(ManagedVoteKeys.voter) == %@", vote.voter)
+        fetchRequest.predicate = NSPredicate(format: "\(ManagedVoteKeys.id) == %@", "\(vote.id)")
         
         do {
             let savedVote = try managedContext.fetch(fetchRequest)[0] as! NSManagedObject
             savedVote.setValue(new.voter, forKey: ManagedVoteKeys.voter)
             savedVote.setValue(new.gender.rawValue, forKey: ManagedVoteKeys.gender)
+            savedVote.setValue(vote.id, forKey: ManagedVoteKeys.id)
             do {
                 try managedContext.save()
                 os_log(.info, log: .coreData, "Updated vote - %@, voter - %@ with vote - %@, voter - %@.", vote.gender.asString, vote.voter, new.gender.asString, new.voter)

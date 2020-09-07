@@ -5,10 +5,13 @@ import CoreData
 
 @objc(ManagedVote) public class ManagedVote: NSManagedObject {
     
+    @NSManaged var id: UUID
     @NSManaged var voter: String
     @NSManaged var gender: Int16
     
-    var vote: Vote { Vote(voter: self.voter, gender: Gender(rawValue: self.gender)!) }
+    var vote: Vote {
+        Vote(id: self.id, voter: self.voter, gender: Gender(rawValue: gender)!)
+    }
     
 }
 
@@ -26,5 +29,6 @@ enum ManagedVoteKeys {
     static let entityName = "ManagedVote"
     static let voter = "voter"
     static let gender = "gender"
+    static let id = "id"
     
 }

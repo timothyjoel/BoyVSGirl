@@ -26,7 +26,7 @@ struct HomeView: View {
                 }
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
                 Button(action: {
-                    self.vm.update(Vote(voter: "Tymeczek", gender: .boy), with: Vote(voter: "Tym", gender: .girl))
+                    print("Update")
                 }) {
                     Text("Update")
                         .frame(width: 50, height: 50, alignment: .center)

@@ -4,6 +4,7 @@
 import Foundation
 
 struct Vote: Equatable {
+    var id = UUID()
     var voter: String
     var gender: Gender
 }
