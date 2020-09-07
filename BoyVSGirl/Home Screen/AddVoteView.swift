@@ -58,7 +58,7 @@ struct GenderSelectionView: View {
                 .scaledToFit()
                 .foregroundColor(self.selectedBoy ? (gender == .boy ? .boy : Color.label.opacity(0.2)): (gender == .girl ? .girl : Color.label.opacity(0.2)))
                 .frame(width: 100, height: 100, alignment: .center)
-                .rotationEffect(.degrees(180))
+                .rotationEffect(.degrees(gender == .boy ? 180 : 0))
                 Text(gender == .boy ? "BOY" : "GIRL")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(self.selectedBoy ? (gender == .boy ? .boy : Color.label.opacity(0.2)): (gender == .girl ? .girl : Color.label.opacity(0.2)))
