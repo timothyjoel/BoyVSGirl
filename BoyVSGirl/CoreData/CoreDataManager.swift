@@ -96,7 +96,7 @@ class CoreDataManager {
         
         do {
             let fetchedVotes = try managedContext.fetch(fetchRequest) as! [ManagedVote]
-            os_log(.info, log: .coreData, "Fetched saved votes data.")
+            os_log(.info, log: .coreData, "Fetched current votes, count: %@.", "\(fetchedVotes.count)")
             completion(fetchedVotes.compactMap { $0.vote })
         } catch let error as NSError {
             os_log(.error, log: .coreData, "Failed to load data, error: %@.", error.localizedDescription)
