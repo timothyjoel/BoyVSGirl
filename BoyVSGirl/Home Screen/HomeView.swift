@@ -21,17 +21,8 @@ struct HomeView: View {
                 NavigationBar(showDeletePopup: self.$showDeletePopup, showMenu: self.$showMenu)
                 Spacer()
                 GirlStatisticsView(vm: vm, showGirlStats: self.$showGirlStats)
-                HomeRingChart(vm: vm) {
-                    self.vm.add(Vote(voter: "Tymeczek", gender: .boy))
-                }
+                HomeRingChart(vm: vm, showAddVote: self.$showAddVote)
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
-                Button(action: {
-                    print("Update")
-                }) {
-                    Text("Update")
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .background(Color.red)
-                }
                 Spacer()
             }
         }.onAppear {
@@ -117,7 +108,7 @@ fileprivate struct GirlStatisticsView: View {
 struct HomeRingChart: View {
     
     @ObservedObject var vm: HomeViewModel
-    var openAddVote: () -> ()
+    @Binding var showAddVote: Bool
     
     var body: some View {
         ZStack {
@@ -133,7 +124,7 @@ struct HomeRingChart: View {
                 .frame(width: UIScreen.width * 2/3, height: UIScreen.width * 2/3, alignment: .center)
                 .animation(.spring())
             Button(action: {
-                self.openAddVote()
+                self.showAddVote.toggle()
             }) {
                 Text("VOTE")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
