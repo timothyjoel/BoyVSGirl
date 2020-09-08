@@ -10,6 +10,7 @@ struct AddVoteView: View {
     
     @State private var selectedBoy: Bool = false
     @State private var voter: String = ""
+    @State private var voterPlaceholder: String = "Enter voter name"
     
     var body: some View {
         VStack (spacing: 16) {
@@ -32,7 +33,9 @@ struct AddVoteView: View {
                 }
                 .padding(.top, -40)
                 .padding(.horizontal, 16)
-                TextField("Enter voter name", text: self.$voter)
+                TextField(voterPlaceholder, text: self.$voter, onEditingChanged: { _ in
+                    self.voterPlaceholder = "Enter voter name"
+                })
                 .multilineTextAlignment(.center)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .frame(width: 280)
@@ -40,22 +43,33 @@ struct AddVoteView: View {
                 .foregroundColor(Color.label)
                 .padding(.horizontal, 16)
                 Button(action: {
-                    self.vm.add(Vote(voter: self.voter, gender: self.selectedBoy ? .boy : .girl)) { result in
+                    self.vm.add(Vote(voter: self.voter, gender: self.selectedBoy ? .boy : .girl)) { result, validation in
                         switch result {
                         case .failure(_):
-                            print("Invalid voter name")
+                            self.voterPlaceholder = validation.message
+                            self.voter = ""
                         case .success(_):
                             self.showAddVote.toggle()
+                            self.voterPlaceholder = "Enter voter name"
                             self.voter = ""
                         }
                     }
                 }) {
-                    Text("Vote")
+                    Text("VOTE")
+                        .frame(width: 200)
                         .foregroundColor(.customViewBackground)
                         .font(.system(size: 18, weight: .bold, design: .rounded))
                         .padding(16)
-                        .frame(width: 200)
-                        .background(RoundedCorners(color: self.voter == "" ? Color.label.opacity(0.2) : .girl, tl: 16, tr: 16, bl: 16, br: 16))
+                        .background(RoundedCorners(color: Validator.validate(voter) == .valid ? .girl : Color.label.opacity(0.2), tl: 16, tr: 16, bl: 16, br: 16))
+                }
+                Button(action: {
+                    self.showAddVote.toggle()
+                    self.voter = ""
+                }) {
+                    Text("Close")
+                    .foregroundColor(.girl)
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .frame(width: 200)
                 }
                 .padding(.bottom, 24)
             }

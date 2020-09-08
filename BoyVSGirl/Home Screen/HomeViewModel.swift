@@ -14,16 +14,18 @@ class HomeViewModel: ObservableObject {
         setFractions()
     }
     
-    func add(_ vote: Vote, completion: @escaping (Result<Bool, HomeViewModelError>) -> Void) {
-        guard vote.voter != "" else {
-            completion(.failure(.invalidName))
+    func add(_ vote: Vote, completion: @escaping (Result<Bool, HomeViewModelError>, Validator.VoterValidation) -> Void) {
+        let validation = Validator.validate(vote.voter)
+        guard validation == .valid else {
+            os_log(.fault, log: .viewModel, "%@ is invalid voter name", vote.voter)
+            completion(.failure(.invalidName), validation)
             return
         }
         CoreDataManager.shared.save(vote)
         CoreDataManager.shared.fetchVotes { [weak self] in self?.votes = $0 }
         setFractions()
         os_log(.info, log: .viewModel, "Current votes: girl - %f, boy - %f.", self.girl, self.boy)
-        completion(.success(true))
+        completion(.success(true), validation)
     }
     
     func update(_ vote: Vote, with new: Vote){
