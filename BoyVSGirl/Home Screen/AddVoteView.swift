@@ -8,7 +8,8 @@ struct AddVoteView: View {
     @ObservedObject var vm: HomeViewModel
     @Binding var showAddVote: Bool
     
-    @State var selectedBoy: Bool = false
+    @State private var selectedBoy: Bool = false
+    @State private var voter: String = ""
     
     var body: some View {
         VStack (spacing: 16) {
@@ -19,24 +20,46 @@ struct AddVoteView: View {
                 .background(Color.girl)
                 .clipShape(Circle())
                 .offset(x: 0, y: -38)
+                Text("What are we expecting?")
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .foregroundColor(Color.label)
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
+                    .offset(x: 0, y: -46)
                 HStack (spacing: 16) {
                     GenderSelectionView(selectedBoy: $selectedBoy, gender: .girl)
                     GenderSelectionView(selectedBoy: $selectedBoy, gender: .boy)
                 }
                 .padding(.top, -40)
                 .padding(.horizontal, 16)
+                TextField("Enter voter name", text: self.$voter)
+                .multilineTextAlignment(.center)
+                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .frame(width: 280)
+                .accentColor(selectedBoy ? .boy : .girl)
+                .foregroundColor(Color.label)
+                .padding(.horizontal, 16)
                 Button(action: {
-                    self.showAddVote.toggle()
+                    self.vm.add(Vote(voter: self.voter, gender: self.selectedBoy ? .boy : .girl)) { result in
+                        switch result {
+                        case .failure(_):
+                            print("Invalid voter name")
+                        case .success(_):
+                            self.showAddVote.toggle()
+                            self.voter = ""
+                        }
+                    }
                 }) {
                     Text("Vote")
-                        .foregroundColor(Color.boy)
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .padding(.bottom, 16)
+                        .foregroundColor(.customViewBackground)
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .padding(16)
+                        .frame(width: 200)
+                        .background(RoundedCorners(color: self.voter == "" ? Color.label.opacity(0.2) : .girl, tl: 16, tr: 16, bl: 16, br: 16))
                 }
+                .padding(.bottom, 24)
             }
             .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-            .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-            
         }
     }
     

@@ -14,11 +14,16 @@ class HomeViewModel: ObservableObject {
         setFractions()
     }
     
-    func add(_ vote: Vote) {
+    func add(_ vote: Vote, completion: @escaping (Result<Bool, HomeViewModelError>) -> Void) {
+        guard vote.voter != "" else {
+            completion(.failure(.invalidName))
+            return
+        }
         CoreDataManager.shared.save(vote)
         CoreDataManager.shared.fetchVotes { [weak self] in self?.votes = $0 }
         setFractions()
         os_log(.info, log: .viewModel, "Current votes: girl - %f, boy - %f.", self.girl, self.boy)
+        completion(.success(true))
     }
     
     func update(_ vote: Vote, with new: Vote){
@@ -44,4 +49,8 @@ class HomeViewModel: ObservableObject {
         self.girl = (girl/allVotes)*100.round(to: 1)
     }
     
+}
+
+enum HomeViewModelError: Error {
+    case invalidName
 }
