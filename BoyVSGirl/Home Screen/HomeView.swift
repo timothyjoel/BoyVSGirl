@@ -25,7 +25,9 @@ struct HomeView: View {
                 BoyStatisticsView(vm: vm, showBoyStats: self.$showBoyStats)
                 Spacer()
             }
+            .allowsHitTesting(!showAddVote)
             .blur(radius: self.showAddVote ? 25 : 0)
+            
             AddVoteView(vm: self.vm, showAddVote: self.$showAddVote)
             .offset(y: showAddVote ? 0 : UIScreen.height)
             .animation(.spring())
