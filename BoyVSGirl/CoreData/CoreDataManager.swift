@@ -16,15 +16,16 @@ class CoreDataManager {
             os_log(.fault, log: .coreData, "Failed to create App Delegate.")
             return
         }
-        guard let entity = NSEntityDescription.entity(forEntityName: ManagedVoteKeys.entityName, in: managedContext) else {
-            os_log(.fault, log: .coreData, "Failed to create entity: %@.", ManagedVoteKeys.entityName)
+        guard let entity = NSEntityDescription.entity(forEntityName: EntityName.ManagedVote.key, in: managedContext) else {
+            os_log(.fault, log: .coreData, "Failed to create entity: %@.", EntityName.ManagedVote.key)
             return
         }
         
         let newVote = NSManagedObject(entity: entity, insertInto: managedContext)
-        newVote.setValue(vote.voter, forKey: ManagedVoteKeys.voter)
-        newVote.setValue(Int16(vote.gender.rawValue), forKey: ManagedVoteKeys.gender)
-        newVote.setValue(vote.id, forKey: ManagedVoteKeys.id)
+        newVote.setValue(vote.voter, forKey: .voter)
+        newVote.setValue(Int16(vote.gender.rawValue), forKey: .gender)
+        newVote.setValue(vote.id, forKey: .id)
+        newVote.setValue(vote.date, forKey: .date)
         
         do {
             try managedContext.save()
@@ -41,14 +42,15 @@ class CoreDataManager {
             return
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedVoteKeys.entityName)
-        fetchRequest.predicate = NSPredicate(format: "\(ManagedVoteKeys.id) == %@", "\(vote.id)")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EntityName.ManagedVote.key)
+        fetchRequest.predicate = NSPredicate(format: "\(ManagedObjectKey.id) == %@", "\(vote.id)")
         
         do {
             let savedVote = try managedContext.fetch(fetchRequest)[0] as! NSManagedObject
-            savedVote.setValue(new.voter, forKey: ManagedVoteKeys.voter)
-            savedVote.setValue(new.gender.rawValue, forKey: ManagedVoteKeys.gender)
-            savedVote.setValue(vote.id, forKey: ManagedVoteKeys.id)
+            savedVote.setValue(new.voter, forKey: .voter)
+            savedVote.setValue(new.gender.rawValue, forKey: .gender)
+            savedVote.setValue(vote.id, forKey: .id)
+            savedVote.setValue(vote.date, forKey: .date)
             do {
                 try managedContext.save()
                 os_log(.info, log: .coreData, "Updated vote - %@, voter - %@ with vote - %@, voter - %@.", vote.gender.asString, vote.voter, new.gender.asString, new.voter)
@@ -67,8 +69,8 @@ class CoreDataManager {
             return
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ManagedVoteKeys.entityName)
-        fetchRequest.predicate = NSPredicate(format: "\(ManagedVoteKeys.id) == %@", "\(vote.id)")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EntityName.ManagedVote.key)
+        fetchRequest.predicate = NSPredicate(format: "\(ManagedObjectKey.id.key) == %@", "\(vote.id)")
         
         do {
             let voteToDelete = try managedContext.fetch(fetchRequest)[0] as! NSManagedObject
@@ -92,7 +94,7 @@ class CoreDataManager {
             return
         }
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ManagedVoteKeys.entityName)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntityName.ManagedVote.key)
         
         do {
             let fetchedVotes = try managedContext.fetch(fetchRequest) as! [ManagedVote]
@@ -104,4 +106,12 @@ class CoreDataManager {
         
     }
     
+}
+
+extension NSManagedObject {
+    
+    func setValue(_ value: Any?, forKey key: ManagedObjectKey) {
+        setValue(value, forKey: key.key)
+    }
+ 
 }

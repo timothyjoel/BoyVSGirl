@@ -8,9 +8,10 @@ import CoreData
     @NSManaged var id: UUID
     @NSManaged var voter: String
     @NSManaged var gender: Int16
+    @NSManaged var date: Date
     
     var vote: Vote {
-        Vote(id: self.id, voter: self.voter, gender: Gender(rawValue: gender)!)
+        Vote(id: self.id, date: self.date, voter: self.voter, gender: Gender(rawValue: gender)!)
     }
     
 }
@@ -18,17 +19,40 @@ import CoreData
 extension ManagedVote {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedVote> {
-        return NSFetchRequest<ManagedVote>(entityName: ManagedVoteKeys.entityName)
+        return NSFetchRequest<ManagedVote>(entityName: EntityName.ManagedVote.key)
     }
 
 }
 
 
-enum ManagedVoteKeys {
+enum ManagedObjectKey {
     
-    static let entityName = "ManagedVote"
-    static let voter = "voter"
-    static let gender = "gender"
-    static let id = "id"
+    case entityName
+    case voter
+    case gender
+    case id
+    case date
+    
+    var key: String {
+        switch self {
+        case .entityName: return "ManagedVote"
+        case .voter: return "voter"
+        case .gender: return "gender"
+        case .id: return "id"
+        case .date: return "date"
+        }
+    }
+    
+}
+
+enum EntityName {
+    
+    case ManagedVote
+    
+    var key: String {
+        switch self {
+        case .ManagedVote: return "ManagedVote"
+        }
+    }
     
 }
