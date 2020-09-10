@@ -104,8 +104,8 @@ fileprivate struct GirlStatisticsView: View {
             .padding(.vertical)
             Spacer()
         }
-        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+//        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
+//        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
         .padding(.horizontal)
         .offset(y: -30)
     }
@@ -163,8 +163,8 @@ fileprivate struct BoyStatisticsView: View {
             .padding(.vertical)
         }
         .animation(.spring())
-        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+//        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
+//        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
         .padding(.horizontal)
         .offset(y: 30)
     }
