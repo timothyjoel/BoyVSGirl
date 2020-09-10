@@ -33,9 +33,7 @@ struct AddVoteView: View {
                 }
                 .padding(.top, -40)
                 .padding(.horizontal, 16)
-                TextField(voterPlaceholder, text: self.$voter, onEditingChanged: { _ in
-                    self.voterPlaceholder = "Enter voter name"
-                })
+                TextField(voterPlaceholder, text: self.$voter)
                 .multilineTextAlignment(.center)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .frame(width: 280)
@@ -43,14 +41,14 @@ struct AddVoteView: View {
                 .foregroundColor(Color.label)
                 .padding(.horizontal, 16)
                 Button(action: {
-                    self.vm.add(Vote(voter: self.voter, gender: self.selectedBoy ? .boy : .girl)) { result, validation in
+                    self.vm.add(Vote(voter: self.voter, gender: self.selectedBoy ? .boy : .girl)) { result, status in
                         switch result {
-                        case .failure(_):
-                            self.voterPlaceholder = validation.message
+                        case .failure(.invalidName):
                             self.voter = ""
+                            self.voterPlaceholder = status.placeholder
                         case .success(_):
                             self.showAddVote.toggle()
-                            self.voterPlaceholder = "Enter voter name"
+                            self.voterPlaceholder = status.placeholder
                             self.voter = ""
                         }
                     }

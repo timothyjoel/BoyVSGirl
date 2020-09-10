@@ -5,7 +5,7 @@ import Foundation
 
 class Validator {
     
-    static func validate(_ voter: String) -> VoterValidation {
+    static func validate(_ voter: String) -> ValidationStatus {
         switch voter.count {
         case 1..<3: return .tooShort
         case let count where count > 15: return .tooLong
@@ -18,18 +18,18 @@ class Validator {
 
 extension Validator {
     
-    enum VoterValidation {
+    enum ValidationStatus {
+        
         case noValue
         case tooShort
         case tooLong
         case valid
         
-        var message: String {
+        var placeholder: String {
             switch self {
             case .tooLong: return "Voter name is too long"
             case .tooShort: return "Voter name is too short"
-            case .noValue: return "Enter voter name"
-            case .valid: return "Voter is valid"
+            case .noValue, .valid: return "Enter voter name"
             }
         }
     }
