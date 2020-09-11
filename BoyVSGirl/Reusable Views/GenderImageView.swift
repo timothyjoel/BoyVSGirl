@@ -14,7 +14,7 @@ struct GenderImageView: View {
     var body: some View {
         Image(gender.name)
             .resizable()
-            .frame(width: UIScreen.height/7, height: UIScreen.height/7, alignment: .center)
+            .frame(width: UIScreen.height/6, height: UIScreen.height/6, alignment: .center)
             .scaledToFit()
     }
 }

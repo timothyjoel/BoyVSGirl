@@ -93,21 +93,20 @@ fileprivate struct GirlStatisticsView: View {
     
     var body: some View {
         HStack {
-            VStack (alignment: .center) {
-                GenderImageView(.girl)
-                Text("\(vm.girl)")
-                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                    .foregroundColor(Color.label)
-                    .multilineTextAlignment(.center)
-                    .animation(nil)
-            }
-            .padding(.vertical)
+            GenderImageView(.girl)
+                .padding(.vertical)
+            Spacer()
+            Text(vm.girl.percentage())
+                .font(.system(size: 70, weight: .bold, design: .rounded))
+                .foregroundColor(.girl)
+                .multilineTextAlignment(.center)
+                .animation(nil)
             Spacer()
         }
-//        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-//        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-        .padding(.horizontal)
-        .offset(y: -30)
+            //        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
+            //        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+            .padding(.horizontal)
+            .offset(y: -30)
     }
 
 }
@@ -152,15 +151,14 @@ fileprivate struct BoyStatisticsView: View {
     var body: some View {
         HStack {
             Spacer()
-            VStack (alignment: .center) {
+            Text(vm.boy.percentage())
+                .font(.system(size: 70, weight: .bold, design: .rounded))
+                .foregroundColor(.boy)
+                .multilineTextAlignment(.center)
+                .animation(nil)
+            Spacer()
                 GenderImageView(.boy)
-                Text("\(vm.boy)")
-                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                    .foregroundColor(Color.label)
-                    .multilineTextAlignment(.center)
-                    .animation(nil)
-            }
-            .padding(.vertical)
+                .padding(.vertical)
         }
         .animation(.spring())
 //        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
