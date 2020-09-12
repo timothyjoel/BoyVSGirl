@@ -22,11 +22,10 @@ struct HomeView: View {
                     Button(action: {
                         print("TAPPED MENU")
                     }) {
-                        IconView(name: .menu, color: .appWhite)
+                        Icon(name: .menu, color: .appWhite)
                     }
-                    
                     Spacer()
-                    IconView(name: .trash, color: .appWhite)
+                    Icon(name: .trash, color: .appWhite)
                 }
                 .padding([.horizontal, .top])
                 HStack (spacing: 0) {
