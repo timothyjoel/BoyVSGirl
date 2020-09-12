@@ -3,19 +3,19 @@
 
 import Foundation
 
-enum Icon {
-    
-    case menu, back, info, cancel, trash, questionMark
-    
-    var name: String {
-        switch self {
-        case .menu: return "list.dash"
-        case .back: return "chevron.left"
-        case .info: return "info.circle"
-        case .cancel: return "xmark"
-        case .trash: return "trash"
-        case .questionMark: return "questionmark"
-        }
-    }
-    
-}
+//enum Icon {
+//
+//    case menu, trash
+//
+//    var name: String {
+//        switch self {
+//        case .menu: return "list.dash"
+//        case .back: return "chevron.left"
+//        case .info: return "info.circle"
+//        case .cancel: return "xmark"
+//        case .trash: return "trash"
+//        case .questionMark: return "questionmark"
+//        }
+//    }
+//
+//}

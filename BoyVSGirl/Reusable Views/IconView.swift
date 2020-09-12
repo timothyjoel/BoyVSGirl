@@ -6,18 +6,30 @@ import SwiftUI
 struct IconView: View {
     
     var name: Icon
-    var size: Image.Scale
-    var weight: Font.Weight
     var color: Color
     
     var body: some View {
         
-        Image(systemName: name.name)
-            .font(.system(size: 20, weight: weight))
-            .imageScale(size)
+        Image(name.name)
+            .resizable()
             .frame(width: 32, height: 32)
+            .scaledToFit()
             .foregroundColor(color)
         
+    }
+    
+}
+
+enum Icon {
+    
+    case menu
+    case trash
+    
+    var name: String {
+        switch self {
+        case .menu: return "menu"
+        case .trash: return "trash"
+        }
     }
     
 }
