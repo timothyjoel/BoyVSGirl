@@ -10,8 +10,6 @@ struct HomeView: View {
     @ObservedObject var vm = HomeViewModel()
     @State var showMenu: Bool = false
     @State var showDeletePopup: Bool = false
-    @State var showGirlStats: Bool = false
-    @State var showBoyStats: Bool = false
     @State var showAddVote: Bool = false
     
     var body: some View {
