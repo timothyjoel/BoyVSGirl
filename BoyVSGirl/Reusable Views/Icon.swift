@@ -6,10 +6,10 @@ import SwiftUI
 struct Icon: View {
     
     var name: IconImage
-    var color: Color
+    var color: Color?
     var side: CGFloat
     
-    init(name: IconImage, color: Color, side: CGFloat = 32) {
+    init(name: IconImage, color: Color? = nil, side: CGFloat = 32) {
         self.name = name
         self.color = color
         self.side = side

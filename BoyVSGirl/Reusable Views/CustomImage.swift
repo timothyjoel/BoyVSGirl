@@ -9,7 +9,7 @@ struct CustomImage: View {
     
     enum ImageName {
         
-        case avatar, folder, gender, pacifier, stroller
+        case avatar, folder, gender, pacifier, stroller, add
         
         var name: String {
             switch self {
@@ -18,6 +18,7 @@ struct CustomImage: View {
             case .pacifier: return "pacifier"
             case .gender: return "gender"
             case .stroller: return "stroller"
+            case .add: return "add"
             }
         }
         
