@@ -67,6 +67,7 @@ struct HomeNavigationBar: View {
 struct HomeStatisticsTop: View {
     
     @ObservedObject var vm: HomeViewModel
+    @State private var showAnimation: Bool = true
     
     var body: some View {
         HStack (spacing: 0) {
@@ -76,6 +77,11 @@ struct HomeStatisticsTop: View {
                 .background(Circle())
                 .foregroundColor(.appWhite)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                .scaleEffect(showAnimation ? 1.10 : 1.00)
+                .animation(Animation.spring(response: 2, dampingFraction: 1, blendDuration: 3.0).repeatForever(autoreverses: true))
+                .onAppear {
+                    self.showAnimation.toggle()
+            }
             Spacer()
                 .frame(width: 24, height: 6, alignment: .center)
             VStack {
