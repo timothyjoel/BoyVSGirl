@@ -22,6 +22,7 @@
 		81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */; };
 		81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext+Color.swift */; };
 		E4218212250D7DC500B67462 /* AddVotePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218211250D7DC500B67462 /* AddVotePopup.swift */; };
+		E4218214250D957B00B67462 /* NameTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218213250D957B00B67462 /* NameTextfield.swift */; };
 		E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEA250417B200760E24 /* ManagedVote.swift */; };
 		E436DD1C2507FC0A00760E24 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E436DD1B2507FC0A00760E24 /* IQKeyboardManagerSwift */; };
 		E436DD1F2507FF2C00760E24 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DD1E2507FF2C00760E24 /* Validator.swift */; };
@@ -61,6 +62,7 @@
 		81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		81BA92FF24DB7E48003A050F /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		E4218211250D7DC500B67462 /* AddVotePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVotePopup.swift; sourceTree = "<group>"; };
+		E4218213250D957B00B67462 /* NameTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextfield.swift; sourceTree = "<group>"; };
 		E436DCEA250417B200760E24 /* ManagedVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVote.swift; sourceTree = "<group>"; };
 		E436DD1E2507FF2C00760E24 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		E46F37D82503D7C2007BD54E /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4218213250D957B00B67462 /* NameTextfield.swift */,
 				81BA92F724DB3FAB003A050F /* RoundedCorners.swift */,
 				81BA92F924DB5112003A050F /* CustomImage.swift */,
 				E4A7F8282500E04200B3568E /* Icon.swift */,
@@ -325,6 +328,7 @@
 				81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */,
 				81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */,
 				E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */,
+				E4218214250D957B00B67462 /* NameTextfield.swift in Sources */,
 				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
 				E436DD1F2507FF2C00760E24 /* Validator.swift in Sources */,
 				E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */,

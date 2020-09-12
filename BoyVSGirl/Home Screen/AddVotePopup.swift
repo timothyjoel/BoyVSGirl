@@ -9,7 +9,9 @@ struct AddVotePopup: View {
     
     @ObservedObject var vm: HomeViewModel
     @Binding var showAddVote: Bool
-    @State private var selectedBoy: Bool = true
+    
+    @State private var isValid: Bool = false
+    @State private var gender: Gender = .boy
     @State private var voter: String = ""
     
     var body: some View {
@@ -20,43 +22,50 @@ struct AddVotePopup: View {
                 .padding(.top, 16)
             CustomImage(image: .avatar)
                 .frame(width: 60, height: 60, alignment: .center)
-            TextField("Enter your name", text: $voter)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(.darkBlue)
+            NameTextfield(isValid: self.$isValid, text: self.$voter)
             HStack (spacing: 16) {
                 Button(action: {
-                    self.selectedBoy = false
+                    self.gender = .girl
                 }) {
                     VStack {
                       CustomImage(image: .gender)
-                        .foregroundColor(selectedBoy ? .lightGrey : .darkBlue)
+                        .foregroundColor(gender == .girl ? .darkBlue : .lightGrey)
                         .frame(width: 60, height: 60)
                       Text("Girl")
                         .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .foregroundColor(selectedBoy ? .lightGrey : .darkBlue)
+                        .foregroundColor(gender == .girl ? .darkBlue : .lightGrey)
                     }
-                    .scaleEffect(selectedBoy ? 1.0 : 1.1)
+                    .scaleEffect(gender == .girl ? 1.0 : 1.1)
                     .animation(.spring())
                 }
                 Button(action: {
-                    self.selectedBoy = true
+                    self.gender = .boy
                 }) {
                     VStack {
                         CustomImage(image: .gender)
-                            .foregroundColor(selectedBoy ? .darkBlue : .lightGrey)
+                            .foregroundColor(gender == .boy ? .darkBlue : .lightGrey)
                             .rotationEffect(.degrees(180))
                             .frame(width: 60, height: 60)
                         Text("Boy")
                             .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .foregroundColor(selectedBoy ? .darkBlue : .lightGrey)
+                            .foregroundColor(gender == .boy ? .darkBlue : .lightGrey)
                     }
-                    .scaleEffect(selectedBoy ? 1.1 : 1.0)
+                    .scaleEffect(gender == .boy ? 1.1 : 1.0)
                     .animation(.spring())
                 }
 
             }
             Button(action: {
+//                self.vm.add(Vote(voter: voter, gender: gender)) { (result, status) in
+//                    switch result {
+//                    case .success(_):
+//                        self.voter = ""
+//                        self.placeholder = status.placeholder
+//                    case .failure(_):
+//                        self.voter = ""
+//                        self.
+//                    }
+//                }
                 self.showAddVote.toggle()
             }) {
                 CustomImage(image: .add)

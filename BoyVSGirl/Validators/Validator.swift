@@ -3,35 +3,36 @@
 
 import Foundation
 
-class Validator {
-    
-    static func validate(_ voter: String) -> ValidationStatus {
-        switch voter.count {
-        case 1..<3: return .tooShort
-        case let count where count > 15: return .tooLong
-        case let count where count == 0: return .noValue
-        default: return .valid
-        }
-    }
-    
+protocol ValidatableTextfield {
+    func getValidation(text: String) -> ValidatableStatus
 }
 
-extension Validator {
+protocol ValidatableStatus {
+    var isValid: Bool { get }
+    var status: String { get }
+}
+
+enum ValidationVoterName: ValidatableStatus {
     
-    enum ValidationStatus {
-        
-        case noValue
-        case tooShort
-        case tooLong
-        case valid
-        
-        var placeholder: String {
-            switch self {
-            case .tooLong: return "Voter name is too long"
-            case .tooShort: return "Voter name is too short"
-            case .noValue, .valid: return "Enter voter name"
-            }
-        }
+    case initial
+    case tooShort
+    case tooLong
+    case valid
+    
+    var status: String {
+        return getValidation().0
     }
     
+    var isValid: Bool {
+        return getValidation().1
+    }
+    
+    private func getValidation() -> (String, Bool) {
+        switch self {
+        case .tooLong: return ("The name is too long", false)
+        case .tooShort: return ("The name is too short", false)
+        case .valid: return ("Your name", true)
+        case .initial: return ("", false)
+        }
+    }
 }
