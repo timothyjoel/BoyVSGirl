@@ -17,7 +17,7 @@ struct HomeView: View {
             Color.blue.edgesIgnoringSafeArea(.all)
             VStack {
                 HomeNavigationBar(showMenu: self.$showMenu, showDeletePopup: self.$showDeletePopup)
-                HomeStatisticsTop(vm: vm)
+                HomeStatisticsTop(vm: vm, showAddVote: self.$showAddVote)
                 HomeStatisticsBottom(vm: vm)
             }
         }
@@ -67,6 +67,7 @@ struct HomeNavigationBar: View {
 struct HomeStatisticsTop: View {
     
     @ObservedObject var vm: HomeViewModel
+    @Binding var showAddVote: Bool
     @State private var showAnimation: Bool = true
     
     var body: some View {
@@ -82,11 +83,15 @@ struct HomeStatisticsTop: View {
                 .onAppear {
                     self.showAnimation.toggle()
             }
+            .onTapGesture {
+                self.showAddVote.toggle()
+                os_log(.info, log: .view, "Show Add Vote popup: %@", "\(self.showAddVote)")
+            }
             Spacer()
                 .frame(width: 24, height: 6, alignment: .center)
             VStack {
                 HStack (spacing: 8) {
-                   Text("Baby")
+                    Text("Baby")
                     .font(.system(size: 32, weight: .semibold, design: .rounded))
                     .foregroundColor(.appWhite)
                     Text("Prediction")
