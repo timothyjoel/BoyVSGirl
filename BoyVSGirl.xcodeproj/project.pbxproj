@@ -18,14 +18,13 @@
 		81BA92F124DB350F003A050F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F024DB350F003A050F /* Vote.swift */; };
 		81BA92F424DB351D003A050F /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F024DB350F003A050F /* Vote.swift */; };
 		81BA92F824DB3FAB003A050F /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F724DB3FAB003A050F /* RoundedCorners.swift */; };
-		81BA92FA24DB5112003A050F /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F924DB5112003A050F /* Images.swift */; };
+		81BA92FA24DB5112003A050F /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92F924DB5112003A050F /* CustomImage.swift */; };
 		81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */; };
 		81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext+Color.swift */; };
 		E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEA250417B200760E24 /* ManagedVote.swift */; };
 		E436DCED2506BD9C00760E24 /* AddVoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEC2506BD9C00760E24 /* AddVoteView.swift */; };
 		E436DD1C2507FC0A00760E24 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E436DD1B2507FC0A00760E24 /* IQKeyboardManagerSwift */; };
 		E436DD1F2507FF2C00760E24 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DD1E2507FF2C00760E24 /* Validator.swift */; };
-		E46F37DA2503D811007BD54E /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F37D92503D811007BD54E /* Icon.swift */; };
 		E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */; };
 		E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38032503E0FA007BD54E /* CoreDataManager.swift */; };
 		E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38052503E1FB007BD54E /* Ext+os_log.swift */; };
@@ -58,13 +57,12 @@
 		81BA92EB24DB2FCB003A050F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		81BA92F024DB350F003A050F /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		81BA92F724DB3FAB003A050F /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
-		81BA92F924DB5112003A050F /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		81BA92F924DB5112003A050F /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		81BA92FF24DB7E48003A050F /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		E436DCEA250417B200760E24 /* ManagedVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVote.swift; sourceTree = "<group>"; };
 		E436DCEC2506BD9C00760E24 /* AddVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVoteView.swift; sourceTree = "<group>"; };
 		E436DD1E2507FF2C00760E24 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		E46F37D92503D811007BD54E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
 		E46F38032503E0FA007BD54E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E46F38052503E1FB007BD54E /* Ext+os_log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+os_log.swift"; sourceTree = "<group>"; };
@@ -155,8 +153,6 @@
 		81BA92F624DB3F9A003A050F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				81BA92F924DB5112003A050F /* Images.swift */,
-				E46F37D92503D811007BD54E /* Icon.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -194,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA92F724DB3FAB003A050F /* RoundedCorners.swift */,
+				81BA92F924DB5112003A050F /* CustomImage.swift */,
 				E4A7F8282500E04200B3568E /* Icon.swift */,
 			);
 			path = "Reusable Views";
@@ -328,7 +325,6 @@
 			files = (
 				81BA92CA24DB2F83003A050F /* AppDelegate.swift in Sources */,
 				81BA92F124DB350F003A050F /* Vote.swift in Sources */,
-				E46F37DA2503D811007BD54E /* Icon.swift in Sources */,
 				E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */,
 				E436DCED2506BD9C00760E24 /* AddVoteView.swift in Sources */,
 				E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */,
@@ -340,7 +336,7 @@
 				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
 				E436DD1F2507FF2C00760E24 /* Validator.swift in Sources */,
 				E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */,
-				81BA92FA24DB5112003A050F /* Images.swift in Sources */,
+				81BA92FA24DB5112003A050F /* CustomImage.swift in Sources */,
 				81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */,
 				E4B235CC24FFFA4B00950A29 /* Ext+Double.swift in Sources */,
 				81BA92F824DB3FAB003A050F /* RoundedCorners.swift in Sources */,

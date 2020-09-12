@@ -29,9 +29,7 @@ struct HomeView: View {
                 }
                 .padding([.horizontal, .top])
                 HStack (spacing: 0) {
-                    Image("pacifier")
-                        .resizable()
-                        .scaledToFit()
+                    CustomImage(image: .pacifier)
                         .frame(width: 50, height: 50, alignment: .center)
                         .padding(16)
                         .background(Circle())
@@ -88,9 +86,7 @@ struct HomeView: View {
                             ForEach(0..<10) { _ in
                                 VStack (alignment: .leading, spacing: 6) {
                                     HStack {
-                                        Image("folder")
-                                        .resizable()
-                                        .scaledToFit()
+                                        CustomImage(image: .folder)
                                         .frame(width: 40, height: 40)
                                         .padding([.leading, .top], 16)
                                         .shadow(color: Color.blue.opacity(0.5), radius: 6, x: 0, y: 4)
@@ -130,9 +126,7 @@ struct HomeView: View {
                         VStack(spacing: 16) {
                             ForEach(0..<10) { _ in
                                 HStack (alignment: .center, spacing: 16) {
-                                  Image("avatar")
-                                    .resizable()
-                                    .scaledToFit()
+                                  CustomImage(image: .avatar)
                                     .frame(width: 45, height: 45)
                                     .padding(.leading, 16)
                                     VStack (alignment: .leading) {
@@ -144,9 +138,7 @@ struct HomeView: View {
                                         .foregroundColor(.lightGrey)
                                     }
                                     Spacer()
-                                    Image("gender")
-                                    .resizable()
-                                    .scaledToFit()
+                                    CustomImage(image: .gender)
                                     .foregroundColor(.darkGrey)
                                     .frame(width: 45, height: 45)
                                     .padding(.trailing, 16)
@@ -157,16 +149,6 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 16)
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     Spacer()
                 }
                 .frame(width: UIScreen.width)
@@ -187,125 +169,3 @@ struct ContentView_Previews: PreviewProvider {
         HomeView()
     }
 }
-//
-//// MARK: - View components
-//
-//fileprivate struct NavigationBar: View {
-//    
-//    @Binding var showDeletePopup: Bool
-//    @Binding var showMenu: Bool
-//    
-//    var body: some View {
-//        HStack {
-//            HStack {
-//                Button(action: {
-//                    self.showMenu.toggle()
-//                }) {
-//                    IconView(name: .menu, size: .medium, weight: .regular, color: Color.blue)
-//                }
-//                .padding(.trailing, 8)
-//            }
-//            .frame(width: 50, height: 40, alignment: .trailing)
-//            .background(RoundedCorners(color: Color.blue, tl: 0, tr: 16, bl: 0, br: 16))
-//            .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-//            Spacer()
-//            HStack {
-//                Button(action: {
-//                    self.showDeletePopup.toggle()
-//                }) {
-//                    IconView(name: .trash, size: .medium, weight: .regular, color: Color.blue)
-//                }
-//                .padding(.leading, 8)
-//                Spacer()
-//            }
-//            .frame(width: 50, height: 40, alignment: .leading)
-//            .background(RoundedCorners(color: Color.blue, tl: 16, tr: 0, bl: 16, br: 0))
-//            .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-//            
-//        }
-//    }
-//    
-//}
-//
-//fileprivate struct GirlStatisticsView: View {
-//    
-//    @ObservedObject var vm: HomeViewModel
-//    @Binding var showGirlStats: Bool
-//    
-//    var body: some View {
-//        HStack {
-//            GenderImageView(.girl)
-//                .padding(.vertical)
-//            Spacer()
-//            Text(vm.girl.percentage())
-//                .font(.system(size: 70, weight: .bold, design: .rounded))
-//                .foregroundColor(.blue)
-//                .multilineTextAlignment(.center)
-//                .animation(nil)
-//            Spacer()
-//        }
-//            //        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-//            //        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-//            .padding(.horizontal)
-//            .offset(y: -30)
-//    }
-//
-//}
-//
-//struct HomeRingChart: View {
-//    
-//    @ObservedObject var vm: HomeViewModel
-//    @Binding var showAddVote: Bool
-//    
-//    var body: some View {
-//        ZStack {
-//            Circle()
-//                .stroke(lineWidth: 40.0)
-//                .foregroundColor(Color.girl)
-//                .frame(width: UIScreen.width * 2/3, height: UIScreen.width * 2/3, alignment: .center)
-//                .animation(.spring())
-//            Circle()
-//                .trim(from: 0.0, to: CGFloat(vm.boy/100))
-//                .stroke(style: StrokeStyle(lineWidth: 40.0, lineCap: .round, lineJoin: .round))
-//                .foregroundColor(Color.boy)
-//                .frame(width: UIScreen.width * 2/3, height: UIScreen.width * 2/3, alignment: .center)
-//                .animation(.spring())
-//            Button(action: {
-//                self.showAddVote.toggle()
-//            }) {
-//                Text("VOTE")
-//                    .font(.system(size: 24, weight: .bold, design: .rounded))
-//                    .foregroundColor(Color.white)
-//                    .frame(width: 90, height: 90, alignment: .center)
-//                    .background(RoundedCorners(color: Color.label, tl: 45, tr: 45, bl: 45, br: 45))
-//            }
-//        }
-//        .animation(.spring())
-//    }
-//}
-//
-//fileprivate struct BoyStatisticsView: View {
-//    
-//    @ObservedObject var vm: HomeViewModel
-//    @Binding var showBoyStats: Bool
-//    
-//    var body: some View {
-//        HStack {
-//            Spacer()
-//            Text(vm.boy.percentage())
-//                .font(.system(size: 70, weight: .bold, design: .rounded))
-//                .foregroundColor(.boy)
-//                .multilineTextAlignment(.center)
-//                .animation(nil)
-//            Spacer()
-//                GenderImageView(.boy)
-//                .padding(.vertical)
-//        }
-//        .animation(.spring())
-////        .background(RoundedCorners(color: Color.customViewBackground, tl: 16, tr: 16, bl: 16, br: 16))
-////        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
-//        .padding(.horizontal)
-//        .offset(y: 30)
-//    }
-//
-//}
