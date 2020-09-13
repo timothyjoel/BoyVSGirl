@@ -39,7 +39,7 @@ struct ValidatedTextfield: View {
             TextField(placeholder, text: self.$text)
             .onReceive(Just(text)) { (insertedText) in
                 let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
-                self.titleMessage = validation.0
+                self.titleMessage = validation.0.uppercased()
                 self.isValid = validation.1
                 self.titleColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
                 self.lineColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
