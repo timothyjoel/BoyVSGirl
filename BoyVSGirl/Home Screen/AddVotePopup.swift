@@ -23,6 +23,7 @@ struct AddVotePopup: View {
             CustomImage(image: .avatar)
                 .frame(width: 60, height: 60, alignment: .center)
             ValidatedTextfield(title: "Name", validator: NameValidator(), placeholder: "Enter your name", isValid: self.$isValid, text: self.$voter)
+                .padding(.horizontal)
             HStack (spacing: 16) {
                 Button(action: {
                     self.gender = .girl
