@@ -21,7 +21,7 @@ struct AddVotePopup: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
             CustomImage(image: .avatar)
-                .frame(width: 60, height: 60, alignment: .center)
+                .frame(width: 70, height: 70, alignment: .center)
             ValidatedTextfield(title: "Name", validator: NameValidator(), placeholder: "Enter your name", isValid: self.$isValid, text: self.$voter)
                 .padding(.horizontal)
             HStack (spacing: 16) {
