@@ -41,8 +41,8 @@ struct ValidatedTextfield: View {
                 let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
                 self.titleMessage = validation.0
                 self.isValid = validation.1
-                self.titleColor = self.isValid ? self.validColor : self.errorColor
-                self.lineColor = self.isValid ? self.validColor : self.errorColor
+                self.titleColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
+                self.lineColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
             }
             .multilineTextAlignment(.leading)
             .font(textFont)
