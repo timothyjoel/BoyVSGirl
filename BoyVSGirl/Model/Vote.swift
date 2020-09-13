@@ -3,7 +3,7 @@
 
 import Foundation
 
-struct Vote: Equatable {
+struct Vote: Equatable, Hashable {
     var id = UUID()
     var date = Date()
     var voter: String
