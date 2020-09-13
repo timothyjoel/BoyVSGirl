@@ -5,27 +5,37 @@ import SwiftUI
 import Combine
 
 struct ValidatedTextfield: View {
-
-    @State private var selectedTitleColor: Color = .darkBlue
-    @State private var selectedLineColor: Color = .darkGrey
-
-    @State private var titleFont: Font = .system(size: 12, weight: .bold, design: .rounded)
-    @State private var textFont: Font = .system(size: 16, weight: .bold, design: .rounded)
     
-    @State private var titleColor: Color = .lightGrey
-    @State private var lineColor: Color = .lightGrey
+    private var titleFont: Font
+    private var textFont: Font
     
-    @State private var validColor: Color = .lightGrey
-    @State private var errorColor: Color = .watermelon
-    @State private var lineHeight: CGFloat = 1
-
-    var title: String
-    var validator: ValidatableStatus
-    var placeholder: String
+    private var mainColor: Color
+    private var secondaryColor: Color
+    private var errorColor: Color
+    
+    private var title: String
+    private var validator: ValidatableStatus
+    private var placeholder: String
+    
+    private var lineHeight: CGFloat
     
     @State var titleMessage: String = ""
     @Binding var isValid: Bool
     @Binding var text: String
+    
+    init(title: String, placeholder: String, text: Binding<String>, isValid: Binding<Bool>, validator: ValidatableStatus, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1) {
+        self.title = title
+        self.placeholder = placeholder
+        self._text = text
+        self._isValid = isValid
+        self.validator = validator
+        self.mainColor = mainColor
+        self.secondaryColor = secondaryColor
+        self.errorColor = errorColor
+        self.titleFont = titleFont
+        self.textFont = textFont
+        self.lineHeight = lineHeight
+    }
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
@@ -33,7 +43,7 @@ struct ValidatedTextfield: View {
                 Text(titleMessage)
                     .multilineTextAlignment(.leading)
                     .font(titleFont)
-                    .foregroundColor(titleColor)
+                    .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
                     .animation(.easeInOut)
             }
             TextField(placeholder, text: self.$text)
@@ -41,8 +51,6 @@ struct ValidatedTextfield: View {
                 let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
                 self.titleMessage = validation.0.uppercased()
                 self.isValid = validation.1
-                self.titleColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
-                self.lineColor = (self.isValid || self.text == "") ? self.validColor : self.errorColor
             }
             .multilineTextAlignment(.leading)
             .font(textFont)
@@ -52,7 +60,7 @@ struct ValidatedTextfield: View {
               Spacer()
             }
             .frame(height: lineHeight)
-            .background(lineColor)
+            .background((self.isValid || self.text == "") ? secondaryColor : errorColor)
         }
     }
     
