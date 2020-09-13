@@ -35,7 +35,7 @@ struct AddVotePopup: View {
                         .font(.system(size: 16, weight: .bold, design: .rounded))
                         .foregroundColor(gender == .girl ? .darkBlue : .lightGrey)
                     }
-                    .scaleEffect(gender == .girl ? 1.0 : 1.1)
+                    .scaleEffect(gender == .girl ? 1.1 : 1.0)
                     .animation(.spring())
                 }
                 Button(action: {
