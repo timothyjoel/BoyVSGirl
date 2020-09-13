@@ -14,5 +14,6 @@ extension Color {
     static var yellow = Color("yellow")
     static var appWhite = Color("appWhite")
     static var superLightGrey = Color("superLightGrey")
+    static var watermelon = Color("watermelon")
     
 }

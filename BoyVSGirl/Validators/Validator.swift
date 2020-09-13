@@ -1,38 +1,25 @@
 //  Copyright © 2020 Timothy Stokarski. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+import Combine
 
-protocol ValidatableTextfield {
-    func getValidation(text: String) -> ValidatableStatus
+protocol ValidatableTextfieldStatus {
+    typealias title = String
+    typealias isValid = Bool
+    typealias ValidationStatus = (title, isValid)
+    func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus
 }
 
-protocol ValidatableStatus {
-    var isValid: Bool { get }
-    var status: String { get }
-}
-
-enum ValidationVoterName: ValidatableStatus {
+class NameValidator: ValidatableTextfieldStatus {
     
-    case initial
-    case tooShort
-    case tooLong
-    case valid
-    
-    var status: String {
-        return getValidation().0
-    }
-    
-    var isValid: Bool {
-        return getValidation().1
-    }
-    
-    private func getValidation() -> (String, Bool) {
-        switch self {
-        case .tooLong: return ("The name is too long", false)
-        case .tooShort: return ("The name is too short", false)
-        case .valid: return ("Your name", true)
-        case .initial: return ("", false)
+    func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus {
+        switch text.count {
+        case 1..<3: return ("Your name is too short", false)
+        case let count where count > 15: return ("Your name is too long", false)
+        case let count where count == 0: return ("", false)
+        default: return (textfieldTitle, true)
         }
     }
+    
 }
