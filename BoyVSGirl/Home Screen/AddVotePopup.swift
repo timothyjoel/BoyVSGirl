@@ -74,6 +74,7 @@ struct AddVotePopup: View {
             
             }
             .buttonStyle(PlainButtonStyle())
+            .opacity(isValid ? 1 : 0)
         }
         .frame(width: 300)
         .background(RoundedCorners(color: .background, tl: 24, tr: 24, bl: 24, br: 24))
