@@ -2,6 +2,7 @@
 
 import os.log
 import Combine
+import Foundation
 
 class HomeViewModel: ObservableObject {
     
@@ -54,6 +55,12 @@ class HomeViewModel: ObservableObject {
         let boy = Double(self.votes.filter { $0.gender == .boy }.count)
         self.boy = (boy/allVotes)*100
         self.girl = (girl/allVotes)*100
+    }
+    
+    func formatted(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        return dateFormatter.string(from: date)
     }
     
 }
