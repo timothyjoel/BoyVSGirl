@@ -56,17 +56,12 @@ struct AddVotePopup: View {
 
             }
             Button(action: {
-//                self.vm.add(Vote(voter: voter, gender: gender)) { (result, status) in
-//                    switch result {
-//                    case .success(_):
-//                        self.voter = ""
-//                        self.placeholder = status.placeholder
-//                    case .failure(_):
-//                        self.voter = ""
-//                        self.
-//                    }
-//                }
-                self.showAddVote.toggle()
+                self.vm.add(Vote(voter: self.voter, gender: self.gender)) { (result) in
+                    if result == .success(true) {
+                        self.voter = ""
+                        self.showAddVote.toggle()
+                    }
+                }
             }) {
                 CustomImage(image: .add)
                 .frame(width: 50, height: 50)
