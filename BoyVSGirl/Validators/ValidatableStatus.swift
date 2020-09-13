@@ -4,7 +4,7 @@
 import SwiftUI
 import Combine
 
-protocol ValidatableStatus {
+protocol AirTextfieldValidationStatus {
     typealias validationMessage = String
     typealias isValid = Bool
     typealias ValidationStatus = (validationMessage, isValid)

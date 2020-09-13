@@ -4,44 +4,26 @@
 import SwiftUI
 import Combine
 
-protocol LightableTextfield {
-    var title: String { get }
-    var placeholder: String { get }
-    var titleFont: Font { get }
-    var textFont: Font { get }
-    var mainColor: Color { get }
-    var secondaryColor: Color { get }
-    var titleMessage: String { get set }
-    var text: String { get set }
-    var lineHeight: CGFloat { get }
-}
-
-protocol LightableValidatation {
-    var validator: ValidatableStatus { get }
-    var errorColor: Color { get }
-    var isValid: Bool { get set }
-}
-
-struct LightValidatedTextfield: View, LightableTextfield, LightableValidatation {
+struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvider {
     
-    private var titleFont: Font
-    private var textFont: Font
+    var titleFont: Font
+    var textFont: Font
     
-    private var mainColor: Color
-    private var secondaryColor: Color
-    private var errorColor: Color
+    var mainColor: Color
+    var secondaryColor: Color
+    var errorColor: Color
     
-    private var title: String
-    private var validator: ValidatableStatus
-    private var placeholder: String
+    var title: String
+    var validator: AiryTextfieldValidator
+    var placeholder: String
     
-    private var lineHeight: CGFloat
+    var lineHeight: CGFloat
     
     @State var titleMessage: String = ""
     @Binding var isValid: Bool
     @Binding var text: String
     
-    init(title: String, placeholder: String, text: Binding<String>, isValid: Binding<Bool>, validator: ValidatableStatus, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1) {
+    init(title: String, placeholder: String, text: Binding<String>, isValid: Binding<Bool>, validator: AiryTextfieldValidator, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1) {
         self.title = title
         self.placeholder = placeholder
         self._text = text

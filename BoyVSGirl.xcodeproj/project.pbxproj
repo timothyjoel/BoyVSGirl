@@ -22,11 +22,14 @@
 		81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */; };
 		81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA92FF24DB7E48003A050F /* Ext+Color.swift */; };
 		E4218212250D7DC500B67462 /* AddVotePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218211250D7DC500B67462 /* AddVotePopup.swift */; };
-		E4218216250E6B0400B67462 /* ValidatedTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218215250E6B0400B67462 /* ValidatedTextfield.swift */; };
+		E4218216250E6B0400B67462 /* AiryValidatedTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218215250E6B0400B67462 /* AiryValidatedTextfield.swift */; };
 		E4218218250E894F00B67462 /* ValidatorName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4218217250E894F00B67462 /* ValidatorName.swift */; };
+		E421821B250ED04400B67462 /* AiryTextfieldProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E421821A250ED04400B67462 /* AiryTextfieldProvider.swift */; };
+		E421821D250ED0E300B67462 /* AiryValidationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E421821C250ED0E300B67462 /* AiryValidationProvider.swift */; };
+		E421821F250ED58800B67462 /* AiryTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E421821E250ED58800B67462 /* AiryTextfield.swift */; };
 		E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DCEA250417B200760E24 /* ManagedVote.swift */; };
 		E436DD1C2507FC0A00760E24 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E436DD1B2507FC0A00760E24 /* IQKeyboardManagerSwift */; };
-		E436DD1F2507FF2C00760E24 /* ValidatableStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DD1E2507FF2C00760E24 /* ValidatableStatus.swift */; };
+		E436DD1F2507FF2C00760E24 /* AiryTextfieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436DD1E2507FF2C00760E24 /* AiryTextfieldValidator.swift */; };
 		E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46F37FE2503DDCD007BD54E /* BoyVSGirl.xcdatamodeld */; };
 		E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38032503E0FA007BD54E /* CoreDataManager.swift */; };
 		E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F38052503E1FB007BD54E /* Ext+os_log.swift */; };
@@ -63,10 +66,13 @@
 		81BA92FC24DB7976003A050F /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		81BA92FF24DB7E48003A050F /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		E4218211250D7DC500B67462 /* AddVotePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVotePopup.swift; sourceTree = "<group>"; };
-		E4218215250E6B0400B67462 /* ValidatedTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextfield.swift; sourceTree = "<group>"; };
+		E4218215250E6B0400B67462 /* AiryValidatedTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiryValidatedTextfield.swift; sourceTree = "<group>"; };
 		E4218217250E894F00B67462 /* ValidatorName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorName.swift; sourceTree = "<group>"; };
+		E421821A250ED04400B67462 /* AiryTextfieldProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiryTextfieldProvider.swift; sourceTree = "<group>"; };
+		E421821C250ED0E300B67462 /* AiryValidationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiryValidationProvider.swift; sourceTree = "<group>"; };
+		E421821E250ED58800B67462 /* AiryTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiryTextfield.swift; sourceTree = "<group>"; };
 		E436DCEA250417B200760E24 /* ManagedVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVote.swift; sourceTree = "<group>"; };
-		E436DD1E2507FF2C00760E24 /* ValidatableStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatableStatus.swift; sourceTree = "<group>"; };
+		E436DD1E2507FF2C00760E24 /* AiryTextfieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiryTextfieldValidator.swift; sourceTree = "<group>"; };
 		E46F37FF2503DDCD007BD54E /* BoyVSGirl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoyVSGirl.xcdatamodel; sourceTree = "<group>"; };
 		E46F38032503E0FA007BD54E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E46F38052503E1FB007BD54E /* Ext+os_log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+os_log.swift"; sourceTree = "<group>"; };
@@ -174,10 +180,21 @@
 			path = "Home Screen";
 			sourceTree = "<group>";
 		};
+		E4218219250ED02800B67462 /* AiryTextfield */ = {
+			isa = PBXGroup;
+			children = (
+				E421821A250ED04400B67462 /* AiryTextfieldProvider.swift */,
+				E421821C250ED0E300B67462 /* AiryValidationProvider.swift */,
+				E436DD1E2507FF2C00760E24 /* AiryTextfieldValidator.swift */,
+				E4218215250E6B0400B67462 /* AiryValidatedTextfield.swift */,
+				E421821E250ED58800B67462 /* AiryTextfield.swift */,
+			);
+			path = AiryTextfield;
+			sourceTree = "<group>";
+		};
 		E436DD1D2507FF0300760E24 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				E436DD1E2507FF2C00760E24 /* ValidatableStatus.swift */,
 				E4218217250E894F00B67462 /* ValidatorName.swift */,
 			);
 			path = Validators;
@@ -187,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA92F724DB3FAB003A050F /* RoundedCorners.swift */,
-				E4218215250E6B0400B67462 /* ValidatedTextfield.swift */,
+				E4218219250ED02800B67462 /* AiryTextfield */,
 				81BA92F924DB5112003A050F /* CustomImage.swift */,
 				E4A7F8282500E04200B3568E /* Icon.swift */,
 			);
@@ -323,23 +340,26 @@
 			files = (
 				81BA92CA24DB2F83003A050F /* AppDelegate.swift in Sources */,
 				81BA92F124DB350F003A050F /* Vote.swift in Sources */,
+				E421821F250ED58800B67462 /* AiryTextfield.swift in Sources */,
 				E436DCEB250417B200760E24 /* ManagedVote.swift in Sources */,
 				E46F38042503E0FA007BD54E /* CoreDataManager.swift in Sources */,
-				E4218216250E6B0400B67462 /* ValidatedTextfield.swift in Sources */,
+				E4218216250E6B0400B67462 /* AiryValidatedTextfield.swift in Sources */,
 				E4A7F8292500E04200B3568E /* Icon.swift in Sources */,
 				E4218212250D7DC500B67462 /* AddVotePopup.swift in Sources */,
 				81BA92CC24DB2F83003A050F /* SceneDelegate.swift in Sources */,
+				E421821B250ED04400B67462 /* AiryTextfieldProvider.swift in Sources */,
 				E4218218250E894F00B67462 /* ValidatorName.swift in Sources */,
 				81BA92FD24DB7976003A050F /* Ext+UIScreen.swift in Sources */,
 				81BA930024DB7E48003A050F /* Ext+Color.swift in Sources */,
 				E46F38002503DDCD007BD54E /* BoyVSGirl.xcdatamodeld in Sources */,
 				81BA92CE24DB2F83003A050F /* HomeView.swift in Sources */,
-				E436DD1F2507FF2C00760E24 /* ValidatableStatus.swift in Sources */,
+				E436DD1F2507FF2C00760E24 /* AiryTextfieldValidator.swift in Sources */,
 				E46F38062503E1FB007BD54E /* Ext+os_log.swift in Sources */,
 				81BA92FA24DB5112003A050F /* CustomImage.swift in Sources */,
 				81BA92EC24DB2FCB003A050F /* HomeViewModel.swift in Sources */,
 				E4B235CC24FFFA4B00950A29 /* Ext+Double.swift in Sources */,
 				81BA92F824DB3FAB003A050F /* RoundedCorners.swift in Sources */,
+				E421821D250ED0E300B67462 /* AiryValidationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

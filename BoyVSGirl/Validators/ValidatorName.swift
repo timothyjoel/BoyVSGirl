@@ -3,9 +3,9 @@
 
 import Foundation
 
-class ValidatorName: ValidatableStatus {
+class ValidatorName: AiryTextfieldValidator {
     
-    func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus {
+    func getValidation(of text: String, textfieldTitle: String) -> AiryValidationStatus {
         switch text.count {
         case 1..<3: return ("Your name is too short", false)
         case let count where count > 15: return ("Your name is too long", false)
