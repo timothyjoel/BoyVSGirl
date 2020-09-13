@@ -5,9 +5,9 @@ import SwiftUI
 import Combine
 
 protocol ValidatableTextfieldStatus {
-    typealias title = String
+    typealias validationMessage = String
     typealias isValid = Bool
-    typealias ValidationStatus = (title, isValid)
+    typealias ValidationStatus = (validationMessage, isValid)
     func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus
 }
 
