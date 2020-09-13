@@ -187,34 +187,37 @@ struct HomeStatisticsTile: View {
 
 struct HomeLastVoters: View {
     
+    @ObservedObject var vm: HomeViewModel
+    
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
             VStack(spacing: 16) {
-                ForEach(0..<10) { _ in
+                ForEach(vm.votes.reversed(), id: \.id) { vote in
                     HStack (alignment: .center, spacing: 16) {
-                      CustomImage(image: .avatar)
-                        .frame(width: 45, height: 45)
-                        .padding(.leading, 16)
+                        CustomImage(image: .avatar)
+                            .frame(width: 45, height: 45)
+                            .padding(.leading, 16)
                         VStack (alignment: .leading) {
-                            Text("Peter Randomski")
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
-                            .foregroundColor(.darkBlue)
-                            Text("Added: 20.09.2020")
-                            .font(.system(size: 13, weight: .bold, design: .rounded))
-                            .foregroundColor(.lightGrey)
+                            Text(vote.voter)
+                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .foregroundColor(.darkBlue)
+                            Text(self.vm.formatted(vote.date))
+                                .font(.system(size: 13, weight: .bold, design: .rounded))
+                                .foregroundColor(.lightGrey)
                         }
                         Spacer()
                         CustomImage(image: .gender)
-                        .foregroundColor(.darkGrey)
-                        .frame(width: 45, height: 45)
-                        .padding(.trailing, 16)
-                    }
+                            .foregroundColor(.darkGrey)
+                            .frame(width: 45, height: 45)
+                            .padding(.trailing, 16)
+                        }
                     .frame(width: UIScreen.width-48, height: 80)
                     .background(RoundedCorners(color: .superLightGrey, tl: 16, tr: 16, bl: 16, br: 16))
                 }
             }
-
+            
         }
+        
     }
     
 }
@@ -236,7 +239,7 @@ struct HomeStatisticsBottom: View {
             HomeSectionTitle(title: "Last votes")
             .padding(.horizontal, 24)
             .padding(.vertical, 16)
-            HomeLastVoters()
+            HomeLastVoters(vm: vm)
             .padding(.bottom, 16)
             Spacer()
         }
