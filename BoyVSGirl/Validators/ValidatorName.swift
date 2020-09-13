@@ -1,17 +1,9 @@
 //  Copyright © 2020 Timothy Stokarski. All rights reserved.
 //
 
-import SwiftUI
-import Combine
+import Foundation
 
-protocol ValidatableTextfieldStatus {
-    typealias validationMessage = String
-    typealias isValid = Bool
-    typealias ValidationStatus = (validationMessage, isValid)
-    func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus
-}
-
-class NameValidator: ValidatableTextfieldStatus {
+class ValidatorName: ValidatableStatus {
     
     func getValidation(of text: String, textfieldTitle: String) -> ValidationStatus {
         switch text.count {

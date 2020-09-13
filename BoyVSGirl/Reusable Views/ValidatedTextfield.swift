@@ -20,7 +20,7 @@ struct ValidatedTextfield: View {
     @State private var lineHeight: CGFloat = 1
 
     var title: String
-    var validator: ValidatableTextfieldStatus
+    var validator: ValidatableStatus
     var placeholder: String
     
     @State var titleMessage: String = ""
