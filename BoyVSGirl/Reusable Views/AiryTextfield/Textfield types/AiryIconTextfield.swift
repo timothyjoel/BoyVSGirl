@@ -19,26 +19,23 @@ struct AiryIconTextfield: View, AiryTextfieldProvider, AiryIconProvider {
     /// Height of line under textfield
     var lineHeight: CGFloat
     /// Color for text
-    var textColor: Color
+    var mainColor: Color
     /// Color for title and line
     var secondaryColor: Color
     /// Regular textfield icon
     var icon: String
     /// Icon size
     var iconSize: CGFloat
-    /// Indiactor whether input is valid
-    @Binding var isValid: Bool
-    /// Validation message displayed as replacement for title
-    @State var validationMessage: String = ""
     /// Currently Inserted text
     @Binding var text: String
+    /// Indicates whether textfield is currently editing text
+    @State var isEditing: Bool = false
     
     init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false, icon: String, iconSize: CGFloat = 16) {
         self.title = title
         self.placeholder = placeholder
         self._text = text
-        self._isValid = isValid
-        self.textColor = mainColor
+        self.mainColor = mainColor
         self.secondaryColor = secondaryColor
         self.titleFont = titleFont
         self.font = textFont
@@ -50,10 +47,10 @@ struct AiryIconTextfield: View, AiryTextfieldProvider, AiryIconProvider {
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
-            Text(validationMessage)
+            Text(text != "" ? title : "")
                 .multilineTextAlignment(.leading)
                 .font(titleFont)
-                .foregroundColor(secondaryColor)
+                .foregroundColor(isEditing ? mainColor : secondaryColor)
                 .animation(.easeInOut)
             HStack (alignment: .center, spacing: 5) {
                 Image(icon)
@@ -62,10 +59,12 @@ struct AiryIconTextfield: View, AiryTextfieldProvider, AiryIconProvider {
                     .scaledToFit()
                     .foregroundColor(secondaryColor)
                     .frame(width: iconSize, height: iconSize)
-                TextField(placeholder, text: self.$text)
+                TextField(placeholder, text: self.$text, onEditingChanged: { isEditing in
+                    self.isEditing = isEditing
+                })
                 .multilineTextAlignment(.leading)
                 .font(font)
-                .foregroundColor(textColor)
+                .foregroundColor(mainColor)
                 .padding(.vertical, 4)
                 Spacer()
             }

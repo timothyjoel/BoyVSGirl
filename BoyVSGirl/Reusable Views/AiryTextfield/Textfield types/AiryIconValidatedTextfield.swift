@@ -20,7 +20,7 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
     /// Height of line under textfield
     var lineHeight: CGFloat
     /// Color for text
-    var textColor: Color
+    var mainColor: Color
     /// Color for title and line
     var secondaryColor: Color
     /// Color for title and line when validation is not passed
@@ -39,6 +39,8 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
     @State var validationMessage: String = ""
     /// Currently Inserted text
     @Binding var text: String
+    /// Indicates whether textfield is currently editing text
+    @State var isEditing: Bool = false
     
     // MARK: - Initializers
     init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, validator: AiryValidator, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false, icon: String, errorIcon: String? = nil, iconSize: CGFloat = 16) {
@@ -47,7 +49,7 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
         self._text = text
         self._isValid = isValid
         self.validator = validator
-        self.textColor = mainColor
+        self.mainColor = mainColor
         self.secondaryColor = secondaryColor
         self.errorColor = errorColor
         self.titleFont = titleFont
@@ -67,10 +69,10 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
     // MARK: - View
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
-            Text(validationMessage)
+            Text(titleUppercased ? validationMessage.uppercased() : validationMessage)
                 .multilineTextAlignment(.leading)
                 .font(titleFont)
-                .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
+                .foregroundColor((self.isValid || self.text == "") ? (self.isEditing ? mainColor : secondaryColor) : errorColor)
                 .animation(.easeInOut)
             HStack (alignment: .center, spacing: 5) {
                 Image(self.isValid ? icon : errorIcon)
@@ -79,15 +81,17 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
                     .scaledToFit()
                     .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
                     .frame(width: iconSize, height: iconSize)
-                TextField(placeholder, text: self.$text)
+                TextField(placeholder, text: self.$text, onEditingChanged: { isEditing in
+                    self.isEditing = isEditing
+                })
                     .onReceive(Just(text)) { (insertedText) in
                         let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
-                        self.validationMessage = validation.0.uppercased()
+                        self.validationMessage = validation.0
                         self.isValid = validation.1
                 }
                 .multilineTextAlignment(.leading)
                 .font(font)
-                .foregroundColor(textColor)
+                .foregroundColor(mainColor)
                 .padding(.vertical, 4)
                 Spacer()
             }
@@ -95,7 +99,7 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
                 Spacer()
             }
             .frame(height: lineHeight)
-            .background((self.isValid || self.text == "") ? secondaryColor : errorColor)
+            .background((self.isValid || self.text == "") ? (self.isEditing ? mainColor : secondaryColor) : errorColor)
         }
     }
     

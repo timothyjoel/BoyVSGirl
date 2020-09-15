@@ -19,17 +19,19 @@ struct AiryTextfield: View, AiryTextfieldProvider {
     /// Height of line under textfield
     var lineHeight: CGFloat
     /// Color for text
-    var textColor: Color
+    var mainColor: Color
     /// Color for title and line
     var secondaryColor: Color
     /// Currently Inserted text
     @Binding var text: String
+    /// Indicates whether textfield is currently editing text
+    @State var isEditing: Bool = false
     
     init(title: String, placeholder: String, text: Binding<String>, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false) {
         self.title = title
         self.placeholder = placeholder
         self._text = text
-        self.textColor = mainColor
+        self.mainColor = mainColor
         self.secondaryColor = secondaryColor
         self.titleFont = titleFont
         self.font = textFont
@@ -42,18 +44,20 @@ struct AiryTextfield: View, AiryTextfieldProvider {
             Text(text != "" ? title : "")
                 .multilineTextAlignment(.leading)
                 .font(titleFont)
-                .foregroundColor(secondaryColor)
+                .foregroundColor(isEditing ? mainColor : secondaryColor)
                 .animation(.easeInOut)
-            TextField(placeholder, text: self.$text)
+            TextField(self.placeholder, text: self.$text, onEditingChanged: { isEditing in
+                    self.isEditing = isEditing
+            })
                 .multilineTextAlignment(.leading)
                 .font(font)
-                .foregroundColor(.darkBlue)
+                .foregroundColor(mainColor)
                 .padding(.vertical, 4)
             HStack {
                 Spacer()
             }
             .frame(height: lineHeight)
-            .background(secondaryColor)
+            .background(isEditing ? mainColor : secondaryColor)
         }
     }
     

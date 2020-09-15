@@ -24,6 +24,7 @@ struct AddVotePopup: View {
                 .frame(width: 70, height: 70, alignment: .center)
             AiryValidatedTextfield(title: "Full name", placeholder: "Enter your name", text: self.$voter, isValid: self.$isValid, validator: ValidatorName(), titleUppercased: false)
                 .padding(.horizontal)
+            AiryTextfield(title: "Full name", placeholder: "Enter your name", text: self.$voter)
             HStack (spacing: 16) {
                 Button(action: {
                     self.gender = .girl

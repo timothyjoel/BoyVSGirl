@@ -15,11 +15,12 @@ protocol AiryTextfieldProvider {
     var placeholder: String { get }
     var titleFont: Font { get }
     var font: Font { get }
-    var textColor: Color { get }
+    var mainColor: Color { get }
     var secondaryColor: Color { get }
     var text: String { get set }
     var lineHeight: CGFloat { get }
     var titleUppercased: Bool { get }
+    var isEditing: Bool { get set }
 }
 
 protocol AiryValidationProvider {
