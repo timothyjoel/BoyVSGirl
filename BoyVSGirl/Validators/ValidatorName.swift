@@ -3,7 +3,7 @@
 
 import Foundation
 
-struct ValidatorName: AiryTextfieldValidator {
+struct ValidatorName: AiryValidator {
     
     func getValidation(of text: String, textfieldTitle: String) -> AiryValidationStatus {
         switch text.count {

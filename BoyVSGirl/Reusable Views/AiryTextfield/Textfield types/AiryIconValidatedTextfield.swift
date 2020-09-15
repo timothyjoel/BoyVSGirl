@@ -4,7 +4,7 @@
 import SwiftUI
 import Combine
 
-struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvider {
+struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvider, AiryIconProvider, AiryErrorIconProvider {
 
     // MARK: - Properties
     /// Placeholder for textfield
@@ -27,6 +27,12 @@ struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvid
     var errorColor: Color
     /// Textfield's validator
     var validator: AiryValidator
+    /// Regular textfield icon
+    var icon: String
+    /// Optional Icon that will  be displayed when validation fails
+    var errorIcon: String
+    /// Icon size
+    var iconSize: CGFloat
     /// Indiactor whether input is valid
     @Binding var isValid: Bool
     /// Validation message displayed as replacement for title
@@ -35,7 +41,7 @@ struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvid
     @Binding var text: String
     
     // MARK: - Initializers
-    init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, validator: AiryValidator, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false) {
+    init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, validator: AiryValidator, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false, icon: String, errorIcon: String? = nil, iconSize: CGFloat = 16) {
         self.title = title
         self.placeholder = placeholder
         self._text = text
@@ -48,6 +54,14 @@ struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvid
         self.font = textFont
         self.lineHeight = lineHeight
         self.titleUppercased = titleUppercased
+        self.icon = icon
+        if let errorIcon = errorIcon {
+            self.errorIcon = errorIcon
+        } else {
+            self.errorIcon = icon
+        }
+        self.iconSize = iconSize
+        
     }
     
     // MARK: - View
@@ -58,16 +72,25 @@ struct AiryValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvid
                 .font(titleFont)
                 .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
                 .animation(.easeInOut)
-            TextField(placeholder, text: self.$text)
-                .onReceive(Just(text)) { (insertedText) in
-                    let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
-                    self.validationMessage = validation.0.uppercased()
-                    self.isValid = validation.1
+            HStack (alignment: .center, spacing: 5) {
+                Image(self.isValid ? icon : errorIcon)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
+                    .frame(width: iconSize, height: iconSize)
+                TextField(placeholder, text: self.$text)
+                    .onReceive(Just(text)) { (insertedText) in
+                        let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
+                        self.validationMessage = validation.0.uppercased()
+                        self.isValid = validation.1
+                }
+                .multilineTextAlignment(.leading)
+                .font(font)
+                .foregroundColor(textColor)
+                .padding(.vertical, 4)
+                Spacer()
             }
-            .multilineTextAlignment(.leading)
-            .font(font)
-            .foregroundColor(textColor)
-            .padding(.vertical, 4)
             HStack {
                 Spacer()
             }

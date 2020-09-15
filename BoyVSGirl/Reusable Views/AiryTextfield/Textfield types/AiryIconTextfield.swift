@@ -4,7 +4,7 @@
 import SwiftUI
 import Combine
 
-struct AiryTextfield: View, AiryTextfieldProvider {
+struct AiryIconTextfield: View, AiryTextfieldProvider, AiryIconProvider {
     
     /// Placeholder for textfield
     var placeholder: String
@@ -22,33 +22,53 @@ struct AiryTextfield: View, AiryTextfieldProvider {
     var textColor: Color
     /// Color for title and line
     var secondaryColor: Color
+    /// Regular textfield icon
+    var icon: String
+    /// Icon size
+    var iconSize: CGFloat
+    /// Indiactor whether input is valid
+    @Binding var isValid: Bool
+    /// Validation message displayed as replacement for title
+    @State var validationMessage: String = ""
     /// Currently Inserted text
     @Binding var text: String
     
-    init(title: String, placeholder: String, text: Binding<String>, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false) {
+    init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false, icon: String, iconSize: CGFloat = 16) {
         self.title = title
         self.placeholder = placeholder
         self._text = text
+        self._isValid = isValid
         self.textColor = mainColor
         self.secondaryColor = secondaryColor
         self.titleFont = titleFont
         self.font = textFont
         self.lineHeight = lineHeight
         self.titleUppercased = titleUppercased
+        self.icon = icon
+        self.iconSize = iconSize
     }
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
-            Text(text != "" ? title : "")
+            Text(validationMessage)
                 .multilineTextAlignment(.leading)
                 .font(titleFont)
                 .foregroundColor(secondaryColor)
                 .animation(.easeInOut)
-            TextField(placeholder, text: self.$text)
+            HStack (alignment: .center, spacing: 5) {
+                Image(icon)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(secondaryColor)
+                    .frame(width: iconSize, height: iconSize)
+                TextField(placeholder, text: self.$text)
                 .multilineTextAlignment(.leading)
                 .font(font)
-                .foregroundColor(.darkBlue)
+                .foregroundColor(textColor)
                 .padding(.vertical, 4)
+                Spacer()
+            }
             HStack {
                 Spacer()
             }
