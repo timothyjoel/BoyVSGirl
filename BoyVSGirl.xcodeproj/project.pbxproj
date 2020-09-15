@@ -186,10 +186,18 @@
 				E421821A250ED04400B67462 /* AiryTextfieldProvider.swift */,
 				E421821C250ED0E300B67462 /* AiryValidationProvider.swift */,
 				E436DD1E2507FF2C00760E24 /* AiryTextfieldValidator.swift */,
+				E42182202510968900B67462 /* Textfield types */,
+			);
+			path = AiryTextfield;
+			sourceTree = "<group>";
+		};
+		E42182202510968900B67462 /* Textfield types */ = {
+			isa = PBXGroup;
+			children = (
 				E4218215250E6B0400B67462 /* AiryValidatedTextfield.swift */,
 				E421821E250ED58800B67462 /* AiryTextfield.swift */,
 			);
-			path = AiryTextfield;
+			path = "Textfield types";
 			sourceTree = "<group>";
 		};
 		E436DD1D2507FF0300760E24 /* Validators */ = {
