@@ -4,66 +4,49 @@
 import SwiftUI
 import Combine
 
-struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationProvider, AiryIconProvider, AiryErrorIconProvider {
+struct AiryIconValidatedTextfield: View {
 
-    // MARK: - Properties
-    /// Placeholder for textfield
-    var placeholder: String
-    /// Title displayed above the textfield
-    var title: String
-    /// Font for title above the textfield
-    var titleFont: Font
-    /// Should title be uppercased
-    var titleUppercased: Bool
-    /// Font for textfield text
-    var font: Font
-    /// Height of line under textfield
-    var lineHeight: CGFloat
-    /// Color for text
-    var mainColor: Color
-    /// Color for title and line
-    var secondaryColor: Color
-    /// Color for title and line when validation is not passed
-    var errorColor: Color
-    /// Textfield's validator
-    var validator: AiryValidator
-    /// Regular textfield icon
-    var icon: String
-    /// Optional Icon that will  be displayed when validation fails
-    var errorIcon: String
-    /// Icon size
-    var iconSize: CGFloat
-    /// Indiactor whether input is valid
-    @Binding var isValid: Bool
-    /// Validation message displayed as replacement for title
-    @State var validationMessage: String = ""
-    /// Currently Inserted text
-    @Binding var text: String
-    /// Indicates whether textfield is currently editing text
-    @State var isEditing: Bool = false
+    // MARK: - Standard AiryTextfield variables
+    private var placeholder: String
+    private var title: String
+    @Binding private var text: String
+    @State private var titleFont: Font = .system(size: 12, weight: .bold, design: .rounded)
+    @State private var titleUppercased: Bool = false
+    @State private var font: Font = .system(size: 16, weight: .bold, design: .rounded)
+    @State private var lineHeight: CGFloat = 1
+    @State private var mainColor: Color = .darkBlue
+    @State private var secondaryColor: Color = .lightGrey
+    @State private var isEditing: Bool = false
+    @State private var textAlignment: TextAlignment = .leading
+    @State private var titleAlignment: TextAlignment = .leading
     
-    // MARK: - Initializers
-    init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, validator: AiryValidator, mainColor: Color = .darkBlue, secondaryColor: Color = .lightGrey, errorColor: Color = .watermelon, titleFont: Font = .system(size: 12, weight: .bold, design: .rounded), textFont: Font = .system(size: 16, weight: .bold, design: .rounded), lineHeight: CGFloat = 1, titleUppercased: Bool = false, icon: String, errorIcon: String? = nil, iconSize: CGFloat = 16) {
+    // MARK: - Validation variables
+    private var validator: AiryValidator
+    @Binding private var isValid: Bool
+    @State private var validationMessage: String = ""
+    @State private var errorColor: Color = .red
+    @State private var isSecureEntry: Bool = false
+    
+    // MARK: - Icon variables
+    private var icon: String
+    private var errorIcon: String
+    @State private var iconSize: CGFloat = 16
+    @State private var iconRenderingMode: Image.TemplateRenderingMode? = .template
+    @State private var iconPosition: IconPosition = .leading
+    
+    // MARK: - Initializer
+    init(title: String = "", placeholder: String = "", text: Binding<String>, isValid: Binding<Bool>, validator: AiryValidator, icon: String, errorIcon: String? = nil) {
         self.title = title
         self.placeholder = placeholder
         self._text = text
         self._isValid = isValid
         self.validator = validator
-        self.mainColor = mainColor
-        self.secondaryColor = secondaryColor
-        self.errorColor = errorColor
-        self.titleFont = titleFont
-        self.font = textFont
-        self.lineHeight = lineHeight
-        self.titleUppercased = titleUppercased
         self.icon = icon
         if let errorIcon = errorIcon {
             self.errorIcon = errorIcon
         } else {
             self.errorIcon = icon
         }
-        self.iconSize = iconSize
-        
     }
     
     // MARK: - View
@@ -75,17 +58,19 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
                 .foregroundColor((self.isValid || self.text == "") ? (self.isEditing ? mainColor : secondaryColor) : errorColor)
                 .animation(.easeInOut)
             HStack (alignment: .center, spacing: 5) {
-                Image(self.isValid ? icon : errorIcon)
+                if iconPosition == .leading {
+                   Image(self.isValid ? icon : errorIcon)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
                     .frame(width: iconSize, height: iconSize)
+                }
                 TextField(placeholder, text: self.$text, onEditingChanged: { isEditing in
                     self.isEditing = isEditing
                 })
                     .onReceive(Just(text)) { (insertedText) in
-                        let validation = self.validator.getValidation(of: insertedText, textfieldTitle: self.title)
+                        let validation = self.validator.getValidation(of: insertedText, textfieldDefaultTitle: self.title)
                         self.validationMessage = validation.0
                         self.isValid = validation.1
                 }
@@ -93,7 +78,14 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
                 .font(font)
                 .foregroundColor(mainColor)
                 .padding(.vertical, 4)
-                Spacer()
+                if iconPosition == .trailing {
+                   Image(self.isValid ? icon : errorIcon)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor((self.isValid || self.text == "") ? secondaryColor : errorColor)
+                    .frame(width: iconSize, height: iconSize)
+                }
             }
             HStack {
                 Spacer()
@@ -101,6 +93,105 @@ struct AiryIconValidatedTextfield: View, AiryTextfieldProvider, AiryValidationPr
             .frame(height: lineHeight)
             .background((self.isValid || self.text == "") ? (self.isEditing ? mainColor : secondaryColor) : errorColor)
         }
+    }
+    
+}
+
+extension AiryIconValidatedTextfield {
+    
+    enum IconPosition {
+        case leading
+        case trailing
+    }
+}
+
+extension AiryIconValidatedTextfield {
+    
+    // MARK: - Standard methods
+    /// Color of text input
+    @inlinable func mainColor(_ color: Color) -> some View {
+        let textfield = self
+        textfield.mainColor = color
+        return textfield
+    }
+    
+    /// Default color of title and line when not selected
+    @inlinable func secondaryColor(_ color: Color) -> some View {
+        let textfield = self
+        textfield.secondaryColor = color
+        return textfield
+    }
+    
+    /// Font of title above textfield
+    @inlinable func titleFont(_ font: Font) -> some View {
+        let textfield = self
+        textfield.titleFont = font
+        return textfield
+    }
+    
+    /// Height of line under textfield
+    @inlinable func lineHeight(_ height: CGFloat) -> some View {
+        let textfield = self
+        textfield.lineHeight = height
+        return textfield
+    }
+    
+    /// Defines whether title above textfield is uppercased
+    @inlinable func titleUppercased(_ bool: Bool) -> some View {
+        let textfield = self
+        textfield.titleUppercased = bool
+        return textfield
+    }
+    
+    /// Defines alignment of title
+    @inlinable func titleAlignment(_ alignment: TextAlignment) -> some View {
+        let textfield = self
+        textfield.titleAlignment = alignment
+        return textfield
+    }
+    
+    /// Defines alignment of text input
+    @inlinable func textAlignment(_ alignment: TextAlignment) -> some View {
+        let textfield = self
+        textfield.textAlignment = alignment
+        return textfield
+    }
+    
+    // MARK: - Validation methods
+    /// Error color of textfield components when validation fails
+    @inlinable func errorColor(_ color: Color) -> some View {
+        let textfield = self
+        textfield.errorColor = color
+        return textfield
+    }
+    
+    /// Sets textfield input as secured
+    @inlinable func isSecuredEntry(_ bool: Bool) -> some View {
+        let textfield = self
+        textfield.isSecureEntry = bool
+        return textfield
+    }
+    
+    // MARK: - Icon methods
+    /// Defines the icon color
+    @inlinable func iconRenderingMode(_ renderingMode: Image.TemplateRenderingMode?) -> some View {
+        let textfield = self
+        textfield.iconRenderingMode = renderingMode
+        return textfield
+    }
+    
+    /// Defines whether title above textfield is uppercased
+    @inlinable func iconSize(_ size: CGFloat) -> some View {
+        let textfield = self
+        textfield.iconSize = size
+        return textfield
+    }
+    
+    /// Defines whether icon should be set on leading or trailing side off the view
+    @inlinable func iconPosition(_ position: IconPosition) -> some View {
+        let textfield = self
+        textfield.iconPosition = position
+        return textfield
     }
     
 }
